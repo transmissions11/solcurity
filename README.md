@@ -28,6 +28,7 @@
 - `F10` - Return arguments are always assigned?
 - `F11` - Write down and test invariants about state before a function can run correctly.
 - `F12` - Write down and test invariants about the return or any changes to state after a function has run.
+- `F13` - Take care when naming functions, because people will assume behavior based on the name.
 
 ## Modifiers
 
