@@ -44,7 +44,7 @@
 - `C5` - Don't use block.number for elapsed time (SWC-116)
 - `C6` - Don't use assert, tx.origin, address.transfer(), address.send() (SWC-115 SWC-134 SWC-110)
 - `C7` - delegatecall only used within the same contract, never external even if trusted (SWC-112)
-- `C8` - Don't use function types
+- `C8` - Don't use function types.
 - `C9` - Don't use blockhash, etc for randomness (SWC-120)
 - `C10` - Protect signatures against replay, use nonce and chainId (SWC-121)
 - `C11` - All signatures strictly EIP-712 (SWC-117 SWC-122)
@@ -63,6 +63,10 @@
 - `C23` - Are logical operators correct ==, !=, &&, ||, !
 - `C24` - Always mul before div, unless mul could overflow.
 - `C25` - Magic numbers are replaced by a constant with a useful name.
+- `C26` - Prefer using WETH over ETH when possible.
+- `C27` - Use SafeERC20 or check return values safely.
+- `C28` - Don't use `msg.value` in a loop or where reentrant delegatecalls are possible.
+
 
 ## Calls in Functions
 
@@ -95,3 +99,10 @@
 - `P1` - SPDX header
 - `P2` - Solidity version hardcoded to 0.6.12 (SWC-102 SWC-103 SWC-124 SWC-129)
 - `P3` - Remove solhints that aren't needed
+
+## DeFi
+
+- `D1` - Check your assumptions about what other contracts do and return
+- `D2` - Don't mix internal accounting with actual balances
+- `D3` - Becareful of relying on the raw token balance of a contract to determine earnings
+- `D4` - Watch out for ERC-777 tokens. Even a token you trust could preform reentrancy if it's an ERC-777.
