@@ -79,6 +79,7 @@
 - `C36` - Do not use assembly to access chainId or contract code/size/hash. Prefer the modern Solidity syntax.
 - `C37` - Comment the "why" as much as possible.
 - `C38` - Comment the "what" if using obscure syntax or writing unconventional code.
+- `C39` - Comment example inputs and outputs next to complex and/or fixed point math.
 
 ## External Calls
 
