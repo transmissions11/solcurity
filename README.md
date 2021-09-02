@@ -50,7 +50,7 @@
 - `C13` - Careful with assembly, don't allow any arbitrary use data. (SWC-127)
 - `C14` - Don't assume a specific ETH balance. (SWC-132)
 - `C15` - Avoid insufficient gas grieving. (SWC-126)
-- `C16` - Private data ISN'T private. (SWC-136)
+- `C16` - Private data isn't private. (SWC-136)
 - `C17` - Updating a struct/array in memory won't modify it in storage.
 - `C18` - Never shadow state variables. (SWC-119)
 - `C19` - No unused variables. (SWC-131)
@@ -62,7 +62,7 @@
 - `C25` - Magic numbers are replaced by a constant with a useful name.
 - `C26` - Prefer using WETH over ETH when possible.
 - `C27` - Use SafeERC20 or check return values safely.
-- `C28` - Don't use `msg.value` in a loop or where reentrant delegatecalls are possible (like if using Multicall)
+- `C28` - Don't use `msg.value` in a loop or where reentrant delegatecalls are possible (like if inherits Multicall/Batchable)
 - `C29` - Don't assume `msg.sender` is always a relevant user.
 - `C30` - Don't use `assert` unless for fuzzing or formal verification. (SWC-110)
 - `C31` - Don't use `tx.origin`. (SWC-115)
