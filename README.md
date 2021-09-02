@@ -69,6 +69,10 @@
 - `C30` - Don't use `assert` unless for fuzzing or formal verification. (SWC-110)
 - `C31` - Don't use `tx.origin`. (SWC-115)
 - `C32` - Don't use `address.transfer()` or `address.send()`. (SWC-134)
+- `C33` - When using low-level calls, ensure the contract exists before calling.
+- `C34` - When calling a function with many parameters, use the named argument syntax.
+- `C35` - Do not use assembly for create2. Prefer the modern salted contract creation syntax.
+- `C36` - Do not use assembly to access chainId or contract code/size/hash. Prefer the modern Solidity syntax.
 
 ## External Calls
 
@@ -88,7 +92,7 @@
 ## Events
 
 - `E1` - Should any arguments be indexed?
-- `E2` - Is the creator of the relevant action logged and indexed?
+- `E2` - Is the creator of the relevant action included and indexed?
 - `E3` - Do not index strings or bytes.
 
 ## Contract
