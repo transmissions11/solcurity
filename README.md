@@ -38,7 +38,7 @@
 
 - `M1` - Are no storage/memory changes made (except in a reentrancy lock)?
 - `M2` - Do not make external calls if possible.
-- `M3` - Is the prupose of the modifier and other important information documented using natspec?
+- `M3` - Is the purpose of the modifier and other important information documented using natspec?
 
 ## Code
 
@@ -83,7 +83,7 @@
 
 ## External Calls
 
-- `X1` - Is an external contract call needed?
+- `X1` - Is an external contract call actually needed?
 - `X2` - If there is an error, could it cause a DoS? Like `balanceOf()` reverting. (SWC-113)
 - `X3` - Would it be harmful if the call reentered into the current function?
 - `X4` - Would it be harmful if the call reentered into the another function?
@@ -92,7 +92,7 @@
 
 ## Static Calls
 
-- `S1` - Is an external contract call needed?
+- `S1` - Is an external contract call actually needed?
 - `S2` - Is it actually marked as view in the interface?
 - `S3` - If there is an error, could it cause a DoS? Like `balanceOf()` reverting. (SWC-113)
 - `S4` - What if it reaches the gas limit?
