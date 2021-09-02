@@ -16,25 +16,23 @@
 
 ## Functions
 
-- `F1` - Set visibility: Change external to public to support batching. Should it be private? (SWC-100)
-- `F2` - Should it be payable?
-- `F3` - Can it be combined with another similar function?
-- `F4` - Check behavior for all function arguments when wrong or extreme.
-- `F5` - Checks-Effects-Interactions pattern followed? (SWC-107)
-- `F6` - Check for front-running possibilities, such as the approve function (SWC-114)
-- `F7` - Avoid insufficient gas griefing (SWC-126)
-- `F8` - Are the correct modifiers applied, such as `onlyOwner`?
-- `F9` - Return arguments are always assigned?
-- `F10` - Write down and test invariants about state before a function can run correctly.
-- `F11` - Write down and test invariants about the return or any changes to state after a function has run.
-
+- `F1` - Can it be external?
+- `F2` - Should it be private? (SWC-100)
+- `F3` - Should it be payable?
+- `F4` - Can it be combined with another similar function?
+- `F5` - Check behavior for all function arguments when wrong or extreme.
+- `F6` - Checks before effects pattern followed? (SWC-107)
+- `F7` - Check for front-running possibilities, such as the approve function (SWC-114)
+- `F8` - Avoid insufficient gas griefing (SWC-126)
+- `F9` - Are the correct modifiers applied, such as `onlyOwner`?
+- `F10` - Return arguments are always assigned?
+- `F11` - Write down and test invariants about state before a function can run correctly.
+- `F12` - Write down and test invariants about the return or any changes to state after a function has run.
 
 ## Modifiers
 
 - `M1` - No storage/memory changes (except for a reentrancy lock)
-- `M2` - No external calls.
-- `M4` - Are any unbounded loops/arrays used that can cause DoS? (SWC-128)
-- `M5` - Check behavior for all function arguments when wrong or extreme.
+- `M2` - No external calls if possible.
 
 ## Code
 
@@ -51,7 +49,7 @@
 - `C11` - All signatures strictly EIP-712 (SWC-117 SWC-122)
 - `C12` - Output of abi.encodePacked shouldn't be hashed if using two or more dynamic types (SWC-133)
 - `C13` - Careful with assembly, don't allow any arbitrary use data (SWC-127)
-- `C14` - Don't assume a specific ETH balance (and token) (SWC-132)
+- `C14` - Don't assume a specific ETH balance (SWC-132)
 - `C15` - Avoid insufficient gas grieving (SWC-126)
 - `C16` - Private data ISN'T private (SWC-136)
 - `C17` - Updating a struct/array in memory won't modify it in storage.
@@ -94,6 +92,7 @@
 - `T1` - Don't use `SELFDESTRUCT` (SWC-106)
 - `T2` - Events emitted for every storage mutating function?
 - `T3` - Check for correct inheritance, keep it simple and linear (SWC-125)
+- `T4` - Use a `receive() external payable` function if the contract should accept plain ETH via `.send()` or `.transfer()`.
 
 ## Project
 
