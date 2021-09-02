@@ -104,7 +104,7 @@
 
 ## Project
 
-- `P1` - Use the right license (you must use GPL if you depend on GPL code, etc)
+- `P1` - Use the right license (you must use GPL if you depend on GPL code, etc).
 - `P2` - Use SPDX headers.
 - `P3` - Unit test everything.
 - `P4` - Fuzz test as much as possible.
