@@ -51,7 +51,7 @@
 - `C8` - Don't use function types.
 - `C9` - Don't use blockhash, etc for randomness. (SWC-120)
 - `C10` - Protect signatures against replay, use nonce and `block.chainid`. (SWC-121)
-- `C11` - All signatures strictly EIP-712. (SWC-117 SWC-122)
+- `C11` - Ensure all signatures use EIP-712. (SWC-117 SWC-122)
 - `C12` - Output of abi.encodePacked shouldn't be hashed if using two or more dynamic types. (SWC-133)
 - `C13` - Careful with assembly, don't use any arbitrary data. (SWC-127)
 - `C14` - Don't assume a specific ETH balance. (SWC-132)
@@ -66,7 +66,7 @@
 - `C23` - Are logical operators correct `==`, `!=`, `&&`, `||`, `!`
 - `C24` - Always mul before div, unless mul could overflow.
 - `C25` - Are magic numbers replaced by a constant with an intuitive name?
-- `C26` - Prefer using WETH over ETH when possible.
+- `C26` - Prefer using WETH over ETH whenever possible.
 - `C27` - Use SafeERC20 or check return values safely.
 - `C28` - Don't use `msg.value` in a loop or where delegatecalls are possible (like if it inherits Multicall).
 - `C29` - Don't assume `msg.sender` is always a relevant user.
