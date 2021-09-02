@@ -65,7 +65,7 @@
 - `C28` - Don't use `msg.value` in a loop or where reentrant delegatecalls are possible (like if using Multicall)
 - `C29` - If function allows specifying a user to perform an action for, do not mistakenly attempt to access that user with `msg.sender`.
 
-## Calls in Functions
+## External Calls
 
 - `X1` - Is the result checked and errors dealt with? (SWC-104)
 - `X2` - If there is an error, could it cause a DoS. Like `balanceOf()` causing revert (SWC-113)
