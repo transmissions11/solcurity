@@ -29,6 +29,7 @@
 - `F11` - Write down and test invariants about state before a function can run correctly.
 - `F12` - Write down and test invariants about the return or any changes to state after a function has run.
 - `F13` - Take care when naming functions, because people will assume behavior based on the name.
+- `F14` - If a function is risky or does not do much safety checking, use an unwieldy name to force users to think twice.
 
 ## Modifiers
 
@@ -111,8 +112,8 @@
 
 - `D1` - Check your assumptions about what other contracts do and return.
 - `D2` - Don't mix internal accounting with actual balances.
-- `D3` - Becareful of relying on the raw token balance of a contract to determine earnings.
+- `D3` - Be careful of relying on the raw token balance of a contract to determine earnings.
 - `D4` - Watch out for ERC-777 tokens. Even a token you trust could preform reentrancy if it's an ERC-777.
 - `D5` - Don't use spot price from an AMM as an oracle.
-- `D6` - Use sanity checks to prevent oracle/price mainpulation.
+- `D6` - Use sanity checks to prevent oracle/price manipulation.
 - `D7` - Do not trade on AMMs without receiving a price target off-chain or using an oracle.
