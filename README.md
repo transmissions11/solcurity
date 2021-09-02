@@ -11,6 +11,7 @@
 - `V5` - Is the purpose of the variable and other important information documented using natspec?
 - `V6` - Can it be packed with an adjacent storage variable?
 - `V7` - Can it be packed in a struct with more than 1 other variable?
+- `V8` - Use full 256 bit types unless packing with other variables.
 
 ## Structs
 
