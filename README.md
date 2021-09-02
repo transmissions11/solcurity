@@ -29,7 +29,7 @@
 - `F11` - Write down and test invariants about state before a function can run correctly.
 - `F12` - Write down and test invariants about the return or any changes to state after a function has run.
 - `F13` - Take care when naming functions, because people will assume behavior based on the name.
-- `F14` - If a function is risky or does not do much safety checking, use an unwieldy name to force users to think twice.
+- `F14` - If a function is intentionally unsafe (to save gas, etc), use an unwieldy name to force users to think twice.
 
 ## Modifiers
 
