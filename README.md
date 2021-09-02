@@ -28,7 +28,7 @@
 - `F6` - Is the checks before effects pattern followed? (SWC-107)
 - `F7` - Check for front-running possibilities, such as the approve function. (SWC-114)
 - `F8` - Is insufficient gas griefing possible? (SWC-126)
-- `F9` - Are the correct modifiers applied, such as `onlyOwner`?
+- `F9` - Are the correct modifiers applied, such as `onlyOwner`/`requiresAuth`?
 - `F10` - Are return values are always assigned?
 - `F11` - Write down and test invariants about state before a function can run correctly.
 - `F12` - Write down and test invariants about the return or any changes to state after a function has run.
