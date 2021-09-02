@@ -4,10 +4,10 @@
 
 ## Variables
 
-- `V1` - Can it be private?
+- `V1` - Can it be private/internal?
 - `V2` - Can it be constant?
-- `V3` - Can it be immutable/constant?
-- `V4` - Is visibility set? (SWC-108)
+- `V3` - Can it be immutable?
+- `V4` - Is its visbility set? (SWC-108)
 - `V5` - Is the purpose of the variable and other important information documented using natspec?
 - `V6` - Can it be packed with an adjacent storage variable?
 - `V7` - Can it be packed in a struct with more than 1 other variable?
@@ -33,7 +33,7 @@
 - `F11` - Write down and test invariants about state before a function can run correctly.
 - `F12` - Write down and test invariants about the return or any changes to state after a function has run.
 - `F13` - Take care when naming functions, because people will assume behavior based on the name.
-- `F14` - If a function is intentionally unsafe (to save gas, etc), use an unwieldy name to force users to think twice.
+- `F14` - If a function is intentionally unsafe (to save gas, etc), use an unwieldy name to draw attention to its risk.
 - `F15` - Are all arguments, return values, side effects and other information documented using natspec?
 
 ## Modifiers
@@ -54,7 +54,7 @@
 - `C9` - Don't use blockhash, etc for randomness. (SWC-120)
 - `C10` - Protect signatures against replay, use nonce and `block.chainid`. (SWC-121)
 - `C11` - Ensure all signatures use EIP-712. (SWC-117 SWC-122)
-- `C12` - Output of abi.encodePacked shouldn't be hashed if using two or more dynamic types. (SWC-133)
+- `C12` - Output of abi.encodePacked shouldn't be hashed if using >2 dynamic types. (SWC-133)
 - `C13` - Careful with assembly, don't use any arbitrary data. (SWC-127)
 - `C14` - Don't assume a specific ETH balance. (SWC-132)
 - `C15` - Avoid insufficient gas griefing. (SWC-126)
@@ -62,7 +62,7 @@
 - `C17` - Updating a struct/array in memory won't modify it in storage.
 - `C18` - Never shadow state variables. (SWC-119)
 - `C19` - No unused variables. (SWC-131)
-- `C20` - Is calculation on the fly cheaper than storing the value?
+- `C20` - Is calculating a value on the fly cheaper than storing it?
 - `C21` - Are all state variables read from the correct contract: master vs. clone?
 - `C22` - Is all usage of `>` or `<` or `>=` or `<=` correct?
 - `C23` - Are logical operators correct `==`, `!=`, `&&`, `||`, `!`
@@ -131,4 +131,4 @@
 - `D4` - Watch out for ERC-777 tokens. Even a token you trust could preform reentrancy if it's an ERC-777.
 - `D5` - Don't use spot price from an AMM as an oracle.
 - `D6` - Use sanity checks to prevent oracle/price manipulation.
-- `D7` - Do not trade on AMMs without receiving a price target off-chain or using an oracle.
+- `D7` - Do not trade on AMMs without receiving a price target off-chain or via an oracle.
