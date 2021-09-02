@@ -87,14 +87,14 @@
 - `X3` - Would it be harmful if the call reentered into the current function?
 - `X4` - Would it be harmful if the call reentered into the another function?
 - `X5` - Is the result checked and errors dealt with? (SWC-104)
-- `X6` - What if it uses all gas?
+- `X6` - What if it reaches the gas limit?
 
 ## Static Calls
 
 - `S1` - Is an external contract call needed?
 - `S2` - Is it actually marked as view in the interface?
 - `S3` - If there is an error, could it cause a DoS? Like `balanceOf()` reverting. (SWC-113)
-- `S4` - What if it uses all gas?
+- `S4` - What if it reaches the gas limit?
 
 ## Events
 
