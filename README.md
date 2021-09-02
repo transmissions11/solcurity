@@ -1,6 +1,6 @@
 # security-checklist
 
-**Security checklist for smart contracts written in Solidity.** Based off of BoringCrypto's [BentoBox checklist](https://github.com/sushiswap/bentobox/blob/master/documentation/checks.txt).
+**Opinionated security and code quality checklist for Solidity smart contracts.** Based off of BoringCrypto's [BentoBox checklist](https://github.com/sushiswap/bentobox/blob/master/documentation/checks.txt).
 
 ## Variables
 
