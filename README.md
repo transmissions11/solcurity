@@ -7,7 +7,7 @@
 - `V1` - Can it be private?
 - `V2` - Can it be constant?
 - `V3` - Can it be immutable/constant?
-- `V4` - Is visibility set (SWC-108)
+- `V4` - Is visibility set? (SWC-108)
 
 ## Structs
 
@@ -22,8 +22,8 @@
 - `F4` - Can it be combined with another similar function?
 - `F5` - Check behavior for all function arguments when wrong or extreme.
 - `F6` - Checks before effects pattern followed? (SWC-107)
-- `F7` - Check for front-running possibilities, such as the approve function (SWC-114)
-- `F8` - Avoid insufficient gas griefing (SWC-126)
+- `F7` - Check for front-running possibilities, such as the approve function. (SWC-114)
+- `F8` - Avoid insufficient gas griefing. (SWC-126)
 - `F9` - Are the correct modifiers applied, such as `onlyOwner`?
 - `F10` - Return arguments are always assigned?
 - `F11` - Write down and test invariants about state before a function can run correctly.
@@ -31,7 +31,7 @@
 
 ## Modifiers
 
-- `M1` - No storage/memory changes (except for a reentrancy lock)
+- `M1` - No storage/memory changes. (except for a reentrancy lock)
 - `M2` - No external calls if possible.
 
 ## Code
@@ -39,22 +39,21 @@
 - `C1` - All math done via SafeMath? (SWC-101)
 - `C2` - Are any storage slots read multiple times?
 - `C3` - Are any unbounded loops/arrays used that can cause DoS? (SWC-128)
-- `C4` - Use block.timestamp only for long intervals (SWC-116)
-- `C5` - Don't use block.number for elapsed time (SWC-116)
-- `C6` - Don't use `assert` (outside of fuzzing or formal verification), `tx.origin`, `address.transfer()`, `address.send()` (SWC-115 SWC-134 SWC-110)
-- `C7` - Avoid delegatecall wherever possible, especially to external (even if trusted) contracts (SWC-112)
+- `C4` - Use block.timestamp only for long intervals. (SWC-116)
+- `C5` - Don't use block.number for elapsed time. (SWC-116)
+- `C7` - Avoid delegatecall wherever possible, especially to external (even if trusted) contracts. (SWC-112)
 - `C8` - Don't use function types.
-- `C9` - Don't use blockhash, etc for randomness (SWC-120)
-- `C10` - Protect signatures against replay, use nonce and chainId (SWC-121)
-- `C11` - All signatures strictly EIP-712 (SWC-117 SWC-122)
-- `C12` - Output of abi.encodePacked shouldn't be hashed if using two or more dynamic types (SWC-133)
-- `C13` - Careful with assembly, don't allow any arbitrary use data (SWC-127)
-- `C14` - Don't assume a specific ETH balance (SWC-132)
-- `C15` - Avoid insufficient gas grieving (SWC-126)
-- `C16` - Private data ISN'T private (SWC-136)
+- `C9` - Don't use blockhash, etc for randomness. (SWC-120)
+- `C10` - Protect signatures against replay, use nonce and `block.chainid`. (SWC-121)
+- `C11` - All signatures strictly EIP-712. (SWC-117 SWC-122)
+- `C12` - Output of abi.encodePacked shouldn't be hashed if using two or more dynamic types. (SWC-133)
+- `C13` - Careful with assembly, don't allow any arbitrary use data. (SWC-127)
+- `C14` - Don't assume a specific ETH balance. (SWC-132)
+- `C15` - Avoid insufficient gas grieving. (SWC-126)
+- `C16` - Private data ISN'T private. (SWC-136)
 - `C17` - Updating a struct/array in memory won't modify it in storage.
-- `C18` - Never shadow state variables (SWC-119)
-- `C19` - No unused variables (SWC-131)
+- `C18` - Never shadow state variables. (SWC-119)
+- `C19` - No unused variables. (SWC-131)
 - `C20` - Is calculation on the fly cheaper than storing the value?
 - `C21` - Are all state variables read from the correct contract: master vs. clone?
 - `C22` - Is `>` or `<` or `>=` or `<=` correct?
@@ -64,12 +63,15 @@
 - `C26` - Prefer using WETH over ETH when possible.
 - `C27` - Use SafeERC20 or check return values safely.
 - `C28` - Don't use `msg.value` in a loop or where reentrant delegatecalls are possible (like if using Multicall)
-- `C29` - If function allows specifying a user to perform an action for, do not mistakenly attempt to access that user with `msg.sender`.
+- `C29` - Don't assume `msg.sender` is always a relevant user.
+- `C30` - Don't use `assert` unless for fuzzing or formal verification. (SWC-110)
+- `C31` - Don't use `tx.origin`. (SWC-115)
+- `C32` - Don't use `address.transfer()` or `address.send()`. (SWC-134)
 
 ## External Calls
 
 - `X1` - Is the result checked and errors dealt with? (SWC-104)
-- `X2` - If there is an error, could it cause a DoS. Like `balanceOf()` causing revert (SWC-113)
+- `X2` - If there is an error, could it cause a DoS. Like `balanceOf()` causing revert. (SWC-113)
 - `X3` - What if it uses all gas?
 - `X4` - Is an external contract call needed?
 - `X5` - Is a lock used? If so are the external calls protected?
@@ -77,7 +79,7 @@
 ## Static Calls
 
 - `S1` - Is it actually marked as view in the interface?
-- `S2` - If there is an error, could it cause a DoS? Like `balanceOf()` causing revert (SWC-113)
+- `S2` - If there is an error, could it cause a DoS? Like `balanceOf()` causing revert. (SWC-113)
 - `S3` - What if it uses all gas?
 - `S4` - Is an external contract call needed?
 
@@ -89,9 +91,9 @@
 
 ## Contract
 
-- `T1` - Don't use `SELFDESTRUCT` (SWC-106)
+- `T1` - Don't use `SELFDESTRUCT`. (SWC-106)
 - `T2` - Events emitted for every storage mutating function?
-- `T3` - Check for correct inheritance, keep it simple and linear (SWC-125)
+- `T3` - Check for correct inheritance, keep it simple and linear. (SWC-125)
 - `T4` - Use a `receive() external payable` function if the contract should accept plain ETH via `.send()` or `.transfer()`.
 
 ## Project
