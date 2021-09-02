@@ -11,8 +11,8 @@
 
 ## Structs
 
-- `S1` - Are the members split on 256 boundaries?
-- `S2` - Can any members be a smaller type?
+- `S1` - Is a struct necessary? Can the variable be packed raw in storage?
+- `S2` - Are its fields packed together (if possible)?
 
 ## Functions
 
@@ -76,25 +76,25 @@
 
 ## External Calls
 
-- `X1` - Is the result checked and errors dealt with? (SWC-104)
+- `X1` - Is an external contract call needed?
 - `X2` - If there is an error, could it cause a DoS? Like `balanceOf()` reverting. (SWC-113)
-- `X3` - What if it uses all gas?
-- `X4` - Is an external contract call needed?
-- `X5` - Would it be harmful if the call reentered into the current function?
-- `X6` - Would it be harmful if the call reentered into the another function?
+- `X3` - Would it be harmful if the call reentered into the current function?
+- `X4` - Would it be harmful if the call reentered into the another function?
+- `X5` - Is the result checked and errors dealt with? (SWC-104)
+- `X6` - What if it uses all gas?
 
 ## Static Calls
 
-- `S1` - Is it actually marked as view in the interface?
-- `S2` - If there is an error, could it cause a DoS? Like `balanceOf()` reverting. (SWC-113)
-- `S3` - What if it uses all gas?
-- `S4` - Is an external contract call needed?
+- `S1` - Is an external contract call needed?
+- `S2` - Is it actually marked as view in the interface?
+- `S3` - If there is an error, could it cause a DoS? Like `balanceOf()` reverting. (SWC-113)
+- `S4` - What if it uses all gas?
 
 ## Events
 
-- `E1` - Should any arguments be indexed?
-- `E2` - Is the creator of the relevant action included and indexed?
-- `E3` - Do not index strings or bytes.
+- `E1` - Should any fields be indexed?
+- `E2` - Is the creator of the relevant action included as an indexed field ?
+- `E3` - Do not index dynamic types like strings or bytes.
 
 ## Contract
 
