@@ -5,7 +5,7 @@
 ## Variables
 
 - `V1` - Is visibility set (SWC-108)
-- `V2` - Can they be private?
+- `V2` - Can it be private?
 - `V3` - Can it be constant?
 - `V4` - Can it be immutable?
 - `V5` - No unused variables (SWC-131)
@@ -56,9 +56,9 @@
   (suicide, block.blockhash, sha3, callcode, throw, msg.gas, constant for view, var)
 - `C18` - Never shadow state variables (SWC-119)
 - `C19` - No unused variables (SWC-131)
-- `C20` - Is calculation on the fly cheaper than storing the value.
-- `C21` - Are all state variables read from the correct contract: master vs. clone
-- `C22` - Is > or < or >= or <= correct
+- `C20` - Is calculation on the fly cheaper than storing the value?
+- `C21` - Are all state variables read from the correct contract: master vs. clone?
+- `C22` - Is > or < or >= or <= correct?
 - `C23` - Are logical operators correct ==, !=, &&, ||, !
 - `C24` - Always mul before div, unless mul could overflow.
 - `C25` - Magic numbers are replaced by a constant with a useful name.
@@ -70,7 +70,7 @@
 ## Calls in Functions
 
 - `X1` - Is the result checked and errors dealt with? (SWC-104)
-- `X2` - If there is an error, could it cause a DoS. Like balanceOf causing revert. (SWC-113)
+- `X2` - If there is an error, could it cause a DoS. Like balanceOf causing revert (SWC-113)
 - `X3` - What if it uses all gas?
 - `X4` - Is an external contract call needed?
 - `X5` - Is a lock used? If so are the external calls protected?
@@ -78,20 +78,21 @@
 ## Static Calls
 
 - `S1` - Is it actually marked as view in the interface?
-- `S2` - If there is an error, could it cause a DoS? Like balanceOf causing revert. (SWC-113)
+- `S2` - If there is an error, could it cause a DoS? Like balanceOf causing revert (SWC-113)
 - `S3` - What if it uses all gas?
 - `S4` - Is an external contract call needed?
 
 ## Events
 
-- `E1` - Should any argument be indexed?
+- `E1` - Should any arguments be indexed?
+- `E2` - Is the creator of the relevant action logged and indexed?
+- `E3` - Do not index strings or bytes.
 
 ## Contract
 
 - `T1` - Are all events there?
-- `T2` - Right-To-Left-Override control character not used, duh (SWC-130)
-- `T3` - No SELFDESTRUCT (SWC-106)
-- `T4` - Check for correct inheritance, keep it simple and linear (SWC-125)
+- `T2` - No SELFDESTRUCT (SWC-106)
+- `T3` - Check for correct inheritance, keep it simple and linear (SWC-125)
 
 ## Project
 
