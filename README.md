@@ -38,7 +38,7 @@
 
 ## Code
 
-- `C1` - All math done via SafeMath? (SWC-101)
+- `C1` - Using SafeMath or 0.8 checked math? (SWC-101)
 - `C2` - Are any storage slots read multiple times?
 - `C3` - Are any unbounded loops/arrays used that can cause DoS? (SWC-128)
 - `C4` - Use block.timestamp only for long intervals. (SWC-116)
@@ -61,7 +61,7 @@
 - `C22` - Is all usage of `>` or `<` or `>=` or `<=` correct?
 - `C23` - Are logical operators correct `==`, `!=`, `&&`, `||`, `!`
 - `C24` - Always mul before div, unless mul could overflow.
-- `C25` - Magic numbers are replaced by a constant with a useful name.
+- `C25` - Are magic numbers are replaced by a constant with a useful name?
 - `C26` - Prefer using WETH over ETH when possible.
 - `C27` - Use SafeERC20 or check return values safely.
 - `C28` - Don't use `msg.value` in a loop or where reentrant delegatecalls are possible (like if it inherits Multicall/Batchable).
