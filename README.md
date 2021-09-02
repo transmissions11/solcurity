@@ -61,7 +61,7 @@
 - `C22` - Is all usage of `>` or `<` or `>=` or `<=` correct?
 - `C23` - Are logical operators correct `==`, `!=`, `&&`, `||`, `!`
 - `C24` - Always mul before div, unless mul could overflow.
-- `C25` - Are magic numbers are replaced by a constant with a useful name?
+- `C25` - Are magic numbers replaced by a constant with an intuitive name?
 - `C26` - Prefer using WETH over ETH when possible.
 - `C27` - Use SafeERC20 or check return values safely.
 - `C28` - Don't use `msg.value` in a loop or where delegatecalls are possible (like if it inherits Multicall).
@@ -80,7 +80,8 @@
 - `X2` - If there is an error, could it cause a DoS? Like `balanceOf()` reverting. (SWC-113)
 - `X3` - What if it uses all gas?
 - `X4` - Is an external contract call needed?
-- `X5` - Is a reentrancy lock used? If so are the external calls protected?
+- `X5` - Would it be harmful if the call reentered into the current function?
+- `X6` - Would it be harmful if the call reentered into the another function?
 
 ## Static Calls
 
