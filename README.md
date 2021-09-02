@@ -4,11 +4,10 @@
 
 ## Variables
 
-- `V1` - Is visibility set (SWC-108)
-- `V2` - Can it be private?
-- `V3` - Can it be constant?
-- `V4` - Can it be immutable?
-- `V5` - No unused variables (SWC-131)
+- `V1` - Can it be private?
+- `V2` - Can it be constant?
+- `V3` - Can it be immutable/constant?
+- `V4` - Is visibility set (SWC-108)
 
 ## Structs
 
