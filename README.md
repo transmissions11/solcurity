@@ -94,7 +94,7 @@
 - `T1` - Don't use `SELFDESTRUCT`. (SWC-106)
 - `T2` - Events emitted for every storage mutating function?
 - `T3` - Check for correct inheritance, keep it simple and linear. (SWC-125)
-- `T4` - Use a `receive() external payable` function if the contract should accept plain ETH via `.send()` or `.transfer()`.
+- `T4` - Use a `receive() external payable` function if the contract should accept transferred ETH.
 
 ## Project
 
