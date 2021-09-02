@@ -112,3 +112,6 @@
 - `D2` - Don't mix internal accounting with actual balances.
 - `D3` - Becareful of relying on the raw token balance of a contract to determine earnings.
 - `D4` - Watch out for ERC-777 tokens. Even a token you trust could preform reentrancy if it's an ERC-777.
+- `D5` - Don't use spot price from an AMM as an oracle.
+- `D6` - Use sanity checks to prevent oracle/price mainpulation.
+- `D7` - Do not trade on AMMs without receiving a price target off-chain or using an oracle.
