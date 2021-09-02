@@ -25,6 +25,9 @@
 - `F7` - Avoid insufficient gas griefing (SWC-126)
 - `F8` - Are the correct modifiers applied, such as `onlyOwner`?
 - `F9` - Return arguments are always assigned?
+- `F10` - Write down and test invariants about state before a function can run correctly.
+- `F11` - Write down and test invariants about the return or any changes to state after a function has run.
+
 
 ## Modifiers
 
@@ -100,6 +103,7 @@
 - `P4` - Fuzz test as much as possible.
 - `P5` - Use the SMTChecker to prove invariants.
 - `P6` - Run and review all Slither findings.
+- `P7` - Write down and test invariants about relationships between stored state.
 
 ## DeFi
 
