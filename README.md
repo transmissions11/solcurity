@@ -12,8 +12,8 @@
 
 ## Structs
 
-- `S1` - Are the members split on 256 boundaries
-- `S2` - Can any members be a smaller type
+- `S1` - Are the members split on 256 boundaries?
+- `S2` - Can any members be a smaller type?
 
 ## Functions
 
@@ -30,9 +30,9 @@
 ## Modifiers
 
 - `M1` - No storage/memory changes (except for a reentrancy lock)
-- `M2` - No external calls
+- `M2` - No external calls.
 - `M4` - Are any unbounded loops/arrays used that can cause DoS? (SWC-128)
-- `M5` - Check behavior for all function arguments when wrong or extreme
+- `M5` - Check behavior for all function arguments when wrong or extreme.
 
 ## Code
 
@@ -65,6 +65,7 @@
 - `C26` - Prefer using WETH over ETH when possible.
 - `C27` - Use SafeERC20 or check return values safely.
 - `C28` - Don't use `msg.value` in a loop or where reentrant delegatecalls are possible (like if using Multicall)
+- `C29` - Updating a struct/array in memory won't modify it in storage.
 
 ## Calls in Functions
 
