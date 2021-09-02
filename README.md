@@ -8,13 +8,13 @@
 - `V2` - Can it be constant?
 - `V3` - Can it be immutable/constant?
 - `V4` - Is visibility set? (SWC-108)
-- `V5` - Document the purpose of the variable and other important information using natspec.
+- `V5` - Is the purpose of the variable and other important information documented using natspec?
 
 ## Structs
 
 - `S1` - Is a struct necessary? Can the variable be packed raw in storage?
 - `S2` - Are its fields packed together (if possible)?
-- `S3` - Document the purpose of the struct and all fields using natspec.
+- `S3` - Is the purpose of the struct and all fields documented using natspec?
 
 ## Functions
 
@@ -23,22 +23,22 @@
 - `F3` - Should it be payable?
 - `F4` - Can it be combined with another similar function?
 - `F5` - Check behavior for all function arguments when wrong or extreme.
-- `F6` - Checks before effects pattern followed? (SWC-107)
+- `F6` - Is the checks before effects pattern followed? (SWC-107)
 - `F7` - Check for front-running possibilities, such as the approve function. (SWC-114)
-- `F8` - Avoid insufficient gas griefing. (SWC-126)
+- `F8` - Is insufficient gas griefing possible? (SWC-126)
 - `F9` - Are the correct modifiers applied, such as `onlyOwner`?
-- `F10` - Return arguments are always assigned?
+- `F10` - Are return values are always assigned?
 - `F11` - Write down and test invariants about state before a function can run correctly.
 - `F12` - Write down and test invariants about the return or any changes to state after a function has run.
 - `F13` - Take care when naming functions, because people will assume behavior based on the name.
 - `F14` - If a function is intentionally unsafe (to save gas, etc), use an unwieldy name to force users to think twice.
-- `F15` - Document all arguments, return values, side effects and other important information using natspec.
+- `F15` - Are all arguments, return values, side effects and other important information documented using natspec?
 
 ## Modifiers
 
-- `M1` - Do not make storage/memory changes except for a reentrancy lock.
+- `M1` - Are no storage/memory changes made (except in a reentrancy lock)?
 - `M2` - Do not make external calls if possible.
-- `M3` - Document the prupose of the modifier and other important information using natspec.
+- `M3` - Is the prupose of the modifier and other important information documented using natspec?
 
 ## Code
 
@@ -53,7 +53,7 @@
 - `C10` - Protect signatures against replay, use nonce and `block.chainid`. (SWC-121)
 - `C11` - All signatures strictly EIP-712. (SWC-117 SWC-122)
 - `C12` - Output of abi.encodePacked shouldn't be hashed if using two or more dynamic types. (SWC-133)
-- `C13` - Careful with assembly, don't allow any arbitrary use data. (SWC-127)
+- `C13` - Careful with assembly, don't use any arbitrary data. (SWC-127)
 - `C14` - Don't assume a specific ETH balance. (SWC-132)
 - `C15` - Avoid insufficient gas griefing. (SWC-126)
 - `C16` - Private data isn't private. (SWC-136)
@@ -110,7 +110,7 @@
 - `T3` - Check for correct inheritance, keep it simple and linear. (SWC-125)
 - `T4` - Use a `receive() external payable` function if the contract should accept transferred ETH.
 - `T5` - Write down and test invariants about relationships between stored state.
-- `T6` - Document the purpose of the contract and how it interacts with others using natspec.
+- `T6` - Is the purpose of the contract and how it interacts with others documented using natspec?
 
 ## Project
 
