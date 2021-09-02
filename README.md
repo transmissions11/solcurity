@@ -24,9 +24,8 @@
 - `F5` - Checks-Effects-Interactions pattern followed? (SWC-107)
 - `F6` - Check for front-running possibilities, such as the approve function (SWC-114)
 - `F7` - Avoid Insufficient gas grieving (SWC-126)
-- `F8` - Gas Limit DoS via Block Stuffing
-- `F9` - Are the correct modifiers applied, such as onlyOwner?
-- `F10` - Return arguments are always assigned?
+- `F8` - Are the correct modifiers applied, such as onlyOwner?
+- `F9` - Return arguments are always assigned?
 
 ## Modifiers
 
@@ -57,7 +56,7 @@
   (suicide, block.blockhash, sha3, callcode, throw, msg.gas, constant for view, var)
 - `C18` - Never shadow state variables (SWC-119)
 - `C19` - No unused variables (SWC-131)
-- `C20` - Is calculation on the fly cheaper than storing the value
+- `C20` - Is calculation on the fly cheaper than storing the value.
 - `C21` - Are all state variables read from the correct contract: master vs. clone
 - `C22` - Is > or < or >= or <= correct
 - `C23` - Are logical operators correct ==, !=, &&, ||, !
@@ -65,8 +64,7 @@
 - `C25` - Magic numbers are replaced by a constant with a useful name.
 - `C26` - Prefer using WETH over ETH when possible.
 - `C27` - Use SafeERC20 or check return values safely.
-- `C28` - Don't use `msg.value` in a loop or where reentrant delegatecalls are possible.
-
+- `C28` - Don't use `msg.value` in a loop or where reentrant delegatecalls are possible (like if using Multicall)
 
 ## Calls in Functions
 
@@ -89,20 +87,22 @@
 
 ## Contract
 
-- `T1` - Are all event there?
+- `T1` - Are all events there?
 - `T2` - Right-To-Left-Override control character not used, duh (SWC-130)
 - `T3` - No SELFDESTRUCT (SWC-106)
 - `T4` - Check for correct inheritance, keep it simple and linear (SWC-125)
 
-## File
+## Project
 
-- `P1` - SPDX header
-- `P2` - Solidity version hardcoded to 0.6.12 (SWC-102 SWC-103 SWC-124 SWC-129)
-- `P3` - Remove solhints that aren't needed
+- `P1` - Use the right license (you must use GPL if you depend on GPL code, etc)
+- `P2` - Use SPDX headers.
+- `P3` - Unit test everything.
+- `P4` - Fuzz test as much as possible.
+- `P5` - Use the SMTChecker to prove invariants.
 
 ## DeFi
 
-- `D1` - Check your assumptions about what other contracts do and return
-- `D2` - Don't mix internal accounting with actual balances
-- `D3` - Becareful of relying on the raw token balance of a contract to determine earnings
+- `D1` - Check your assumptions about what other contracts do and return.
+- `D2` - Don't mix internal accounting with actual balances.
+- `D3` - Becareful of relying on the raw token balance of a contract to determine earnings.
 - `D4` - Watch out for ERC-777 tokens. Even a token you trust could preform reentrancy if it's an ERC-777.
