@@ -119,7 +119,7 @@
 - `P2` - Unit test everything.
 - `P3` - Fuzz test as much as possible.
 - `P4` - Use the SMTChecker to prove invariants.
-- `P5` - Run and review all Slither findings.
+- `P5` - Run Slither and review all findings.
 
 ## DeFi
 
