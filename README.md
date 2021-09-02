@@ -73,6 +73,8 @@
 - `C34` - When calling a function with many parameters, use the named argument syntax.
 - `C35` - Do not use assembly for create2. Prefer the modern salted contract creation syntax.
 - `C36` - Do not use assembly to access chainId or contract code/size/hash. Prefer the modern Solidity syntax.
+- `C37` - Comment the "why" as much as possible.
+- `C38` - Comment the "what" if using obscure syntax or writing unconventional code.
 
 ## External Calls
 
@@ -102,6 +104,7 @@
 - `T2` - Are events emitted for every storage mutating function?
 - `T3` - Check for correct inheritance, keep it simple and linear. (SWC-125)
 - `T4` - Use a `receive() external payable` function if the contract should accept transferred ETH.
+- `T5` - Write down and test invariants about relationships between stored state.
 
 ## Project
 
@@ -110,7 +113,6 @@
 - `P3` - Fuzz test as much as possible.
 - `P4` - Use the SMTChecker to prove invariants.
 - `P5` - Run and review all Slither findings.
-- `P6` - Write down and test invariants about relationships between stored state.
 
 ## DeFi
 
