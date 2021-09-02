@@ -33,8 +33,8 @@
 
 ## Modifiers
 
-- `M1` - No storage/memory changes. (except for a reentrancy lock)
-- `M2` - No external calls if possible.
+- `M1` - Do not make storage/memory changes except for a reentrancy lock.
+- `M2` - Do not make external calls if possible.
 
 ## Code
 
