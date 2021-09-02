@@ -89,8 +89,8 @@
 
 ## Contract
 
-- `T1` - Are all events there?
-- `T2` - No SELFDESTRUCT (SWC-106)
+- `T1` - No SELFDESTRUCT (SWC-106)
+- `T2` - Events emitted for every storage mutating function?
 - `T3` - Check for correct inheritance, keep it simple and linear (SWC-125)
 
 ## Project
