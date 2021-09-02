@@ -51,7 +51,7 @@
 - `C12` - Output of abi.encodePacked shouldn't be hashed if using two or more dynamic types. (SWC-133)
 - `C13` - Careful with assembly, don't allow any arbitrary use data. (SWC-127)
 - `C14` - Don't assume a specific ETH balance. (SWC-132)
-- `C15` - Avoid insufficient gas grieving. (SWC-126)
+- `C15` - Avoid insufficient gas griefing. (SWC-126)
 - `C16` - Private data isn't private. (SWC-136)
 - `C17` - Updating a struct/array in memory won't modify it in storage.
 - `C18` - Never shadow state variables. (SWC-119)
@@ -77,15 +77,15 @@
 ## External Calls
 
 - `X1` - Is the result checked and errors dealt with? (SWC-104)
-- `X2` - If there is an error, could it cause a DoS. Like `balanceOf()` causing revert. (SWC-113)
+- `X2` - If there is an error, could it cause a DoS? Like `balanceOf()` reverting. (SWC-113)
 - `X3` - What if it uses all gas?
 - `X4` - Is an external contract call needed?
-- `X5` - Is a lock used? If so are the external calls protected?
+- `X5` - Is a reentrancy lock used? If so are the external calls protected?
 
 ## Static Calls
 
 - `S1` - Is it actually marked as view in the interface?
-- `S2` - If there is an error, could it cause a DoS? Like `balanceOf()` causing revert. (SWC-113)
+- `S2` - If there is an error, could it cause a DoS? Like `balanceOf()` reverting. (SWC-113)
 - `S3` - What if it uses all gas?
 - `S4` - Is an external contract call needed?
 
