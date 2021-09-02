@@ -8,11 +8,13 @@
 - `V2` - Can it be constant?
 - `V3` - Can it be immutable/constant?
 - `V4` - Is visibility set? (SWC-108)
+- `V5` - Document the purpose of the variable and other important information using natspec.
 
 ## Structs
 
 - `S1` - Is a struct necessary? Can the variable be packed raw in storage?
 - `S2` - Are its fields packed together (if possible)?
+- `S3` - Document the purpose of the struct and all fields using natspec.
 
 ## Functions
 
@@ -30,11 +32,13 @@
 - `F12` - Write down and test invariants about the return or any changes to state after a function has run.
 - `F13` - Take care when naming functions, because people will assume behavior based on the name.
 - `F14` - If a function is intentionally unsafe (to save gas, etc), use an unwieldy name to force users to think twice.
+- `F15` - Document all arguments, return values, side effects and other important information using natspec.
 
 ## Modifiers
 
 - `M1` - Do not make storage/memory changes except for a reentrancy lock.
 - `M2` - Do not make external calls if possible.
+- `M3` - Document the prupose of the modifier and other important information using natspec.
 
 ## Code
 
@@ -97,6 +101,7 @@
 - `E1` - Should any fields be indexed?
 - `E2` - Is the creator of the relevant action included as an indexed field?
 - `E3` - Do not index dynamic types like strings or bytes.
+- `E4` - Document when the event is emitted and all fields using natspec.
 
 ## Contract
 
@@ -105,6 +110,7 @@
 - `T3` - Check for correct inheritance, keep it simple and linear. (SWC-125)
 - `T4` - Use a `receive() external payable` function if the contract should accept transferred ETH.
 - `T5` - Write down and test invariants about relationships between stored state.
+- `T6` - Document the purpose of the contract and how it interacts with others using natspec.
 
 ## Project
 
