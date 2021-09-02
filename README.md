@@ -93,24 +93,24 @@
 ## Events
 
 - `E1` - Should any fields be indexed?
-- `E2` - Is the creator of the relevant action included as an indexed field ?
+- `E2` - Is the creator of the relevant action included as an indexed field?
 - `E3` - Do not index dynamic types like strings or bytes.
 
 ## Contract
 
-- `T1` - Are events emitted for every storage mutating function?
-- `T2` - Check for correct inheritance, keep it simple and linear. (SWC-125)
-- `T3` - Use a `receive() external payable` function if the contract should accept transferred ETH.
+- `T1` - Use an SPDX license identifier.
+- `T2` - Are events emitted for every storage mutating function?
+- `T3` - Check for correct inheritance, keep it simple and linear. (SWC-125)
+- `T4` - Use a `receive() external payable` function if the contract should accept transferred ETH.
 
 ## Project
 
 - `P1` - Use the right license (you must use GPL if you depend on GPL code, etc).
-- `P2` - Use SPDX headers.
-- `P3` - Unit test everything.
-- `P4` - Fuzz test as much as possible.
-- `P5` - Use the SMTChecker to prove invariants.
-- `P6` - Run and review all Slither findings.
-- `P7` - Write down and test invariants about relationships between stored state.
+- `P2` - Unit test everything.
+- `P3` - Fuzz test as much as possible.
+- `P4` - Use the SMTChecker to prove invariants.
+- `P5` - Run and review all Slither findings.
+- `P6` - Write down and test invariants about relationships between stored state.
 
 ## DeFi
 
