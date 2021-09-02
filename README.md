@@ -56,7 +56,7 @@
 - `C19` - No unused variables. (SWC-131)
 - `C20` - Is calculation on the fly cheaper than storing the value?
 - `C21` - Are all state variables read from the correct contract: master vs. clone?
-- `C22` - Is `>` or `<` or `>=` or `<=` correct?
+- `C22` - Is all usage of `>` or `<` or `>=` or `<=` correct?
 - `C23` - Are logical operators correct `==`, `!=`, `&&`, `||`, `!`
 - `C24` - Always mul before div, unless mul could overflow.
 - `C25` - Magic numbers are replaced by a constant with a useful name.
