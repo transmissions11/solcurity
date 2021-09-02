@@ -47,14 +47,14 @@
 - `C1` - Using SafeMath or 0.8 checked math? (SWC-101)
 - `C2` - Are any storage slots read multiple times?
 - `C3` - Are any unbounded loops/arrays used that can cause DoS? (SWC-128)
-- `C4` - Use block.timestamp only for long intervals. (SWC-116)
+- `C4` - Use `block.timestamp` only for long intervals. (SWC-116)
 - `C5` - Don't use block.number for elapsed time. (SWC-116)
 - `C7` - Avoid delegatecall wherever possible, especially to external (even if trusted) contracts. (SWC-112)
 - `C8` - Don't use function types.
 - `C9` - Don't use blockhash, etc for randomness. (SWC-120)
-- `C10` - Protect signatures against replay, use nonce and `block.chainid`. (SWC-121)
+- `C10` - Protect signatures against replay, use a nonce and `block.chainid`. (SWC-121)
 - `C11` - Ensure all signatures use EIP-712. (SWC-117 SWC-122)
-- `C12` - Output of abi.encodePacked shouldn't be hashed if using >2 dynamic types. (SWC-133)
+- `C12` - Output of `abi.encodePacked()` shouldn't be hashed if using >2 dynamic types. (SWC-133)
 - `C13` - Careful with assembly, don't use any arbitrary data. (SWC-127)
 - `C14` - Don't assume a specific ETH balance. (SWC-132)
 - `C15` - Avoid insufficient gas griefing. (SWC-126)
