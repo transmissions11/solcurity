@@ -25,6 +25,7 @@ Opinionated **security** and **code quality** checklist for **Solidity smart con
 - `V6` - Can it be packed with an adjacent storage variable?
 - `V7` - Can it be packed in a struct with more than 1 other variable?
 - `V8` - Use full 256 bit types unless packing with other variables.
+- `V9` - If it's a public array, is a seperate function provided to return the full array?
 
 ## Structs
 
