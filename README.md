@@ -83,7 +83,7 @@ Opinionated **security** and **code quality** checklist for **Solidity smart con
 - `C23` - Are logical operators correct `==`, `!=`, `&&`, `||`, `!`
 - `C24` - Always mul before div, unless mul could overflow.
 - `C25` - Are magic numbers replaced by a constant with an intuitive name?
-- `C26` - If the recipient of ETH had a fallback function that reverted, could it cause DoS?
+- `C26` - If the recipient of ETH had a fallback function that reverted, could it cause DoS? (SWC-113)
 - `C27` - Use SafeERC20 or check return values safely.
 - `C28` - Don't use `msg.value` in a loop or where delegatecalls are possible (like if it inherits Multicall).
 - `C29` - Don't assume `msg.sender` is always a relevant user.
