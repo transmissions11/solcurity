@@ -53,8 +53,8 @@ Opinionated **security** and **code quality** checklist for **Solidity smart con
 
 ## Modifiers
 
-- `M1` - Are no storage/memory changes made (except in a reentrancy lock)?
-- `M2` - Do not make external calls if possible.
+- `M1` - Are no storage updates made (except in a reentrancy lock)?
+- `M2` - Are external calls avoided?
 - `M3` - Is the purpose of the modifier and other important information documented using natspec?
 
 ## Code
@@ -66,8 +66,8 @@ Opinionated **security** and **code quality** checklist for **Solidity smart con
 - `C5` - Don't use block.number for elapsed time. (SWC-116)
 - `C7` - Avoid delegatecall wherever possible, especially to external (even if trusted) contracts. (SWC-112)
 - `C8` - Don't use function types.
-- `C9` - Don't use blockhash, etc for randomness. (SWC-120)
-- `C10` - Protect signatures against replay, use a nonce and `block.chainid`. (SWC-121)
+- `C9` - Don't use `blockhash()`, etc for randomness. (SWC-120)
+- `C10` - Are signatures protected against replay with a nonce and `block.chainid`> (SWC-121)
 - `C11` - Ensure all signatures use EIP-712. (SWC-117 SWC-122)
 - `C12` - Output of `abi.encodePacked()` shouldn't be hashed if using >2 dynamic types. (SWC-133)
 - `C13` - Careful with assembly, don't use any arbitrary data. (SWC-127)
@@ -78,16 +78,16 @@ Opinionated **security** and **code quality** checklist for **Solidity smart con
 - `C18` - Never shadow state variables. (SWC-119)
 - `C19` - No unused variables. (SWC-131)
 - `C20` - Is calculating a value on the fly cheaper than storing it?
-- `C21` - Are all state variables read from the correct contract: master vs. clone?
+- `C21` - Are all state variables read from the correct contract (master vs. clone)?
 - `C22` - Is all usage of `>` or `<` or `>=` or `<=` correct?
-- `C23` - Are logical operators correct `==`, `!=`, `&&`, `||`, `!`
+- `C23` - Are logical operators used correctly (`==`, `!=`, `&&`, `||`, `!`)?
 - `C24` - Always mul before div, unless mul could overflow.
 - `C25` - Are magic numbers replaced by a constant with an intuitive name?
 - `C26` - If the recipient of ETH had a fallback function that reverted, could it cause DoS? (SWC-113)
 - `C27` - Use SafeERC20 or check return values safely.
 - `C28` - Don't use `msg.value` in a loop or where delegatecalls are possible (like if it inherits Multicall).
 - `C29` - Don't assume `msg.sender` is always a relevant user.
-- `C30` - Don't use `assert` unless for fuzzing or formal verification. (SWC-110)
+- `C30` - Don't use `assert()` unless for fuzzing or formal verification. (SWC-110)
 - `C31` - Don't use `tx.origin`. (SWC-115)
 - `C32` - Don't use `address.transfer()` or `address.send()`. (SWC-134)
 - `C33` - When using low-level calls, ensure the contract exists before calling.
@@ -101,7 +101,7 @@ Opinionated **security** and **code quality** checklist for **Solidity smart con
 ## External Calls
 
 - `X1` - Is an external contract call actually needed?
-- `X2` - If there is an error, could it cause a DoS? Like `balanceOf()` reverting. (SWC-113)
+- `X2` - If there is an error, could it cause DoS? Like `balanceOf()` reverting. (SWC-113)
 - `X3` - Would it be harmful if the call reentered into the current function?
 - `X4` - Would it be harmful if the call reentered into the another function?
 - `X5` - Is the result checked and errors dealt with? (SWC-104)
@@ -111,7 +111,7 @@ Opinionated **security** and **code quality** checklist for **Solidity smart con
 
 - `S1` - Is an external contract call actually needed?
 - `S2` - Is it actually marked as view in the interface?
-- `S3` - If there is an error, could it cause a DoS? Like `balanceOf()` reverting. (SWC-113)
+- `S3` - If there is an error, could it cause DoS? Like `balanceOf()` reverting. (SWC-113)
 - `S4` - What if it reaches the gas limit?
 
 ## Events
@@ -119,7 +119,7 @@ Opinionated **security** and **code quality** checklist for **Solidity smart con
 - `E1` - Should any fields be indexed?
 - `E2` - Is the creator of the relevant action included as an indexed field?
 - `E3` - Do not index dynamic types like strings or bytes.
-- `E4` - Document when the event is emitted and all fields using natspec.
+- `E4` - Is the when the event emitted and all fields documented using natspec?
 
 ## Contract
 
