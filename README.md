@@ -80,7 +80,7 @@ Opinionated **security** and **code quality** checklist for **Solidity smart con
 - `C20` - Is calculating a value on the fly cheaper than storing it?
 - `C21` - Are all state variables read from the correct contract (master vs. clone)?
 - `C22` - Is all usage of `>` or `<` or `>=` or `<=` correct?
-- `C23` - Are logical operators used correctly (`==`, `!=`, `&&`, `||`, `!`)?
+- `C23` - Are logical operators used correctly (`==`, `!=`, `&&`, `||`, `!`), especially to prevent off-by-one errors?
 - `C24` - Always mul before div, unless mul could overflow.
 - `C25` - Are magic numbers replaced by a constant with an intuitive name?
 - `C26` - If the recipient of ETH had a fallback function that reverted, could it cause DoS? (SWC-113)
