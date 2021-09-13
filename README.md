@@ -51,6 +51,7 @@ Opinionated **security** and **code quality** checklist for **Solidity smart con
 - `F13` - Take care when naming functions, because people will assume behavior based on the name.
 - `F14` - If a function is intentionally unsafe (to save gas, etc), use an unwieldy name to draw attention to its risk.
 - `F15` - Are all arguments, return values, side effects and other information documented using natspec?
+- `F16` - If the function allows operating on another user in the system, do not assume `msg.sender` is the user being operated on.
 
 ## Modifiers
 
