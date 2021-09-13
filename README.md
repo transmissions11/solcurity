@@ -13,7 +13,7 @@ Opinionated **security** and **code quality** checklist for **Solidity smart con
 - Do a generic line-by-line review of the contracts.
 - Do another review from the perspective of every actor in the threat model.
 - Glance over the project's tests + code coverage and look deeper at areas lacking coverage.
-- Run tools like Slither and Solhint and review their output.
+- Run tools like Slither/Solhint and review their output.
 
 ## Variables
 
