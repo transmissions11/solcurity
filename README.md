@@ -1,6 +1,6 @@
-# security-checklist
+# The Solcurity Standard 
 
-Opinionated **security** and **code quality** checklist for **Solidity smart contracts**. Based off the [BentoBox checklist](https://github.com/sushiswap/bentobox/blob/master/documentation/checks.txt).
+Opinionated **security** and **code quality** standard for **Solidity smart contracts**. Based off the [BentoBox checklist](https://github.com/sushiswap/bentobox/blob/master/documentation/checks.txt).
 
 ### General Auditing Approach:
 - Read the projects docs, specs, and whitepaper to understand what the smart contracts are meant to do.
