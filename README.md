@@ -1,4 +1,4 @@
-# Solcurity Checklist 
+# The Solcurity Checklist 
 
 Opinionated **security** and **code quality** checklist for **Solidity smart contracts**. Based off the [BentoBox checklist](https://github.com/sushiswap/bentobox/blob/master/documentation/checks.txt).
 
