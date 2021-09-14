@@ -152,4 +152,4 @@ Opinionated **security** and **code quality** standard for **Solidity smart cont
 - `D6` - Do not trade on AMMs without receiving a price target off-chain or via an oracle.
 - `D7` - Watch out for ERC-777 tokens. Even a token you trust could preform reentrancy if it's an ERC-777.
 - `D8` - Watch out for fee-on-transfer tokens.
-- `D9` - Watch out for rebasing tokens,
+- `D9` - Watch out for rebasing tokens.
