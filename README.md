@@ -88,7 +88,7 @@ Opinionated **security** and **code quality** checklist for **Solidity smart con
 - `C26` - If the recipient of ETH had a fallback function that reverted, could it cause DoS? (SWC-113)
 - `C27` - Use SafeERC20 or check return values safely.
 - `C28` - Don't use `msg.value` in a loop.
-- `C29` - Don't use `msg.value` if self-delegatecalls are possible (like if the contract inherits `Multicall`/`Batchable`).
+- `C29` - Don't use `msg.value` if recursive delegatecalls are possible (like if the contract inherits `Multicall`/`Batchable`).
 - `C30` - Don't assume `msg.sender` is always a relevant user.
 - `C31` - Don't use `assert()` unless for fuzzing or formal verification. (SWC-110)
 - `C32` - Don't use `tx.origin` for authorization, (SWC-115)
