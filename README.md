@@ -123,6 +123,7 @@ Opinionated **security** and **code quality** checklist for **Solidity smart con
 - `E2` - Is the creator of the relevant action included as an indexed field?
 - `E3` - Do not index dynamic types like strings or bytes.
 - `E4` - Is the when the event emitted and all fields documented using natspec?
+- `E5` - Are all users/ids that are opreated on in functions that emit the event stored as indexed fields?
 
 ## Contract
 
