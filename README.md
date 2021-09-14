@@ -115,7 +115,7 @@ Opinionated **security** and **code quality** standard for **Solidity smart cont
 - `S1` - Is an external contract call actually needed?
 - `S2` - Is it actually marked as view in the interface?
 - `S3` - If there is an error, could it cause DoS? Like `balanceOf()` reverting. (SWC-113)
-- `S4` - What if it reaches the gas limit?
+- `S4` - If the call entered an infinite loop, could it cause DoS?
 
 ## Events
 
@@ -151,5 +151,5 @@ Opinionated **security** and **code quality** standard for **Solidity smart cont
 - `D5` - Use sanity checks to prevent oracle/price manipulation.
 - `D6` - Do not trade on AMMs without receiving a price target off-chain or via an oracle.
 - `D7` - Watch out for ERC-777 tokens. Even a token you trust could preform reentrancy if it's an ERC-777.
-- `D8` - Watch out for fee-on-transfer tokens.
-- `D9` - Watch out for rebasing tokens.
+- `D8` - Watch out for fee-on-transfer tokens. If they are unsupported, ensure that property is documented.
+- `D9` - Watch out for rebasing tokens. If they are unsupported, ensure that property is documented.
