@@ -88,7 +88,7 @@ Opinionated **security** and **code quality** checklist for **Solidity smart con
 - `C26` - If the recipient of ETH had a fallback function that reverted, could it cause DoS? (SWC-113)
 - `C27` - Use SafeERC20 or check return values safely.
 - `C28` - Don't use `msg.value` in a loop.
-- `C29` - Don't use `msg.value` where recursive delegatecalls are possible (like if the contract inherits `Multicall`/`Batchable`).
+- `C29` - Don't use `msg.value` if self-delegatecalls are possible (like if the contract inherits `Multicall`/`Batchable`).
 - `C30` - Don't assume `msg.sender` is always a relevant user.
 - `C31` - Don't use `assert()` unless for fuzzing or formal verification. (SWC-110)
 - `C32` - Don't use `tx.origin` for authorization, (SWC-115)
@@ -97,8 +97,9 @@ Opinionated **security** and **code quality** checklist for **Solidity smart con
 - `C35` - When calling a function with many parameters, use the named argument syntax.
 - `C36` - Do not use assembly for create2. Prefer the modern salted contract creation syntax.
 - `C37` - Do not use assembly to access chainif or contract code/size/hash. Prefer the modern Solidity syntax.
-- `C38` - Comment the "why" as much as possible. Comment the "what" if using obscure syntax or writing unconventional code.
-- `C39` - Comment example inputs and outputs next to complex and/or fixed point math.
+- `C38` - Comment the "why" as much as possible. 
+- `C39` - Comment the "what" if using obscure syntax or writing unconventional code.
+- `C40` - Comment example inputs and outputs next to complex and/or fixed point math.
 
 ## External Calls
 
