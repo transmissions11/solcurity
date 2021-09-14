@@ -2,7 +2,7 @@
 
 Opinionated **security** and **code quality** checklist for **Solidity smart contracts**. Based off the [BentoBox checklist](https://github.com/sushiswap/bentobox/blob/master/documentation/checks.txt).
 
-### General Auditing Approach:
+### General Review Approach:
 - Read the project's docs, specs, and whitepaper to understand what the smart contracts are meant to do.
 - Construct a mental model of what you expect the contracts to look like before checking out the code.
 - Glance over the contracts to get a sense of the project's architecture. Tools like Surya can come in handy.
