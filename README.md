@@ -147,7 +147,9 @@ Opinionated **security** and **code quality** checklist for **Solidity smart con
 - `D1` - Check your assumptions about what other contracts do and return.
 - `D2` - Don't mix internal accounting with actual balances.
 - `D3` - Be careful of relying on the raw token balance of a contract to determine earnings.
-- `D4` - Watch out for ERC-777 tokens. Even a token you trust could preform reentrancy if it's an ERC-777.
-- `D5` - Don't use spot price from an AMM as an oracle.
-- `D6` - Use sanity checks to prevent oracle/price manipulation.
-- `D7` - Do not trade on AMMs without receiving a price target off-chain or via an oracle.
+- `D4` - Don't use spot price from an AMM as an oracle.
+- `D5` - Use sanity checks to prevent oracle/price manipulation.
+- `D6` - Do not trade on AMMs without receiving a price target off-chain or via an oracle.
+- `D7` - Watch out for ERC-777 tokens. Even a token you trust could preform reentrancy if it's an ERC-777.
+- `D8` - Watch out for fee-on-transfer tokens.
+- `D9` - Watch out for rebasing tokens,
