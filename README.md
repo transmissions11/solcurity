@@ -98,7 +98,7 @@ Opinionated **security** and **code quality** standard for **Solidity smart cont
 - `C35` - When calling a function with many parameters, use the named argument syntax.
 - `C36` - Do not use assembly for create2. Prefer the modern salted contract creation syntax.
 - `C37` - Do not use assembly to access chainif or contract code/size/hash. Prefer the modern Solidity syntax.
-- `C38` - Use the `delete` keyword when setting a variable to a zero value.
+- `C38` - Use the `delete` keyword when setting a variable to a zero value (`0`, `false`, `""`, etc).
 - `C39` - Comment the "why" as much as possible. 
 - `C40` - Comment the "what" if using obscure syntax or writing unconventional code.
 - `C41` - Comment explanations + example inputs/outputs next to complex and fixed point math.
