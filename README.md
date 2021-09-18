@@ -157,3 +157,4 @@ Opinionated **security** and **code quality** standard for **Solidity smart cont
 - `D7` - Watch out for ERC-777 tokens. Even a token you trust could preform reentrancy if it's an ERC-777.
 - `D8` - Watch out for fee-on-transfer tokens. If they are unsupported, ensure that property is documented.
 - `D9` - Watch out for rebasing tokens. If they are unsupported, ensure that property is documented.
+- `D10` - Watch out for tokens that use too many or too few decimals. Ensure the max and min supported values are documented.
