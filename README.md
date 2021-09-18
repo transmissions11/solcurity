@@ -104,7 +104,7 @@ Opinionated **security** and **code quality** standard for **Solidity smart cont
 - `C41` - Comment explanations + example inputs/outputs next to complex and fixed point math.
 - `C42` - Comment explanations wherever optimizations are done, along with an estimate of much gas they save.
 - `C43` - Comment explanations wherever certian optimizations are purposely avoided, along with an estimate of much gas they would/wouldn't save if implemented.
-- `C44` - Use `unchecked` blocks where overflow/underflow is impossible, or where if an underflow/overflow was to occur, reverting would be unhelpful (counters, etc). Comment explanations wherever `unchecked` is used, along with an estimate of how much gas using it saves (if relevant).
+- `C44` - Use `unchecked` blocks where overflow/underflow is impossible, or where if an underflow/overflow was to occur, reverting would be unhelpful (counters, etc). Comment explanations wherever `unchecked` is used, along with an estimate of how much gas it saves (if relevant).
 
 ## External Calls
 
