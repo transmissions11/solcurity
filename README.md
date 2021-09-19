@@ -138,6 +138,7 @@ Opinionated **security** and **code quality** standard for **Solidity smart cont
 - `T4` - Use a `receive() external payable` function if the contract should accept transferred ETH.
 - `T5` - Write down and test invariants about relationships between stored state.
 - `T6` - Is the purpose of the contract and how it interacts with others documented using natspec?
+- `T7` - The contract should be marked `abstract` if another contract must inherit it to unlock its full functionality.
 
 ## Project
 
