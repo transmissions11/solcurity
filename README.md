@@ -14,7 +14,7 @@ Opinionated **security** and **code quality** standard for **Solidity smart cont
 - Do another review from the perspective of every actor in the threat model.
 - Glance over the project's tests + code coverage and look deeper at areas lacking coverage.
 - Run tools like Slither/Solhint and review their output.
-- Look through similar projects and their audits to check for any similar issues or oversights.
+- Look at related projects and their audits to check for any similar issues or oversights.
 
 ## Variables
 
