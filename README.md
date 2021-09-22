@@ -18,15 +18,16 @@ Opinionated **security** and **code quality** standard for **Solidity smart cont
 
 ## Variables
 
-- `V1` - Can it be private/internal?
-- `V2` - Can it be constant?
-- `V3` - Can it be immutable?
+- `V1` - Can it be `internal`?
+- `V2` - Can it be `constant`?
+- `V3` - Can it be `immutable`?
 - `V4` - Is its visbility set? (SWC-108)
 - `V5` - Is the purpose of the variable and other important information documented using natspec?
 - `V6` - Can it be packed with an adjacent storage variable?
 - `V7` - Can it be packed in a struct with more than 1 other variable?
 - `V8` - Use full 256 bit types unless packing with other variables.
 - `V9` - If it's a public array, is a seperate function provided to return the full array?
+- `V10` - Only use `private` to intentionally prevent child contracts from accessing the variable, prefer `internal` for flexibility.
 
 ## Structs
 
@@ -36,9 +37,9 @@ Opinionated **security** and **code quality** standard for **Solidity smart cont
 
 ## Functions
 
-- `F1` - Can it be external?
-- `F2` - Should it be private? (SWC-100)
-- `F3` - Should it be payable?
+- `F1` - Can it be `external`?
+- `F2` - Should it be `internal`?
+- `F3` - Should it be `payable`?
 - `F4` - Can it be combined with another similar function?
 - `F5` - Check behavior for all function arguments when wrong or extreme.
 - `F6` - Is the checks before effects pattern followed? (SWC-107)
@@ -53,6 +54,7 @@ Opinionated **security** and **code quality** standard for **Solidity smart cont
 - `F15` - Are all arguments, return values, side effects and other information documented using natspec?
 - `F16` - If the function allows operating on another user in the system, do not assume `msg.sender` is the user being operated on.
 - `F17` - If the function requires the contract is in an uninitialized state, do not use `owner == address(0)` to check.
+- `F18` - Only use `private` to intentionally prevent child contracts from calling the function, prefer `internal` for flexibility.
 
 ## Modifiers
 
