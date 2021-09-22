@@ -55,6 +55,7 @@ Opinionated **security** and **code quality** standard for **Solidity smart cont
 - `F16` - If the function allows operating on another user in the system, do not assume `msg.sender` is the user being operated on.
 - `F17` - If the function requires the contract is in an uninitialized state, do not use `owner == address(0)` to check.
 - `F18` - Only use `private` to intentionally prevent child contracts from calling the function, prefer `internal` for flexibility.
+- `F19` - Use `virtual` if there are legitimate (and safe) instances where a child contract may wish to override the function's behavior.
 
 ## Modifiers
 
