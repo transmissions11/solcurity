@@ -41,7 +41,7 @@ Opinionated **security** and **code quality** standard for **Solidity smart cont
 - `F2` - Should it be `internal`?
 - `F3` - Should it be `payable`?
 - `F4` - Can it be combined with another similar function?
-- `F5` - Check behavior for all function arguments when wrong or extreme.
+- `F5` - Validate all parameters are within safe bounds bounds, even if the function can only be called by a trusted user.
 - `F6` - Is the checks before effects pattern followed? (SWC-107)
 - `F7` - Check for front-running possibilities, such as the approve function. (SWC-114)
 - `F8` - Is insufficient gas griefing possible? (SWC-126)
@@ -71,7 +71,7 @@ Opinionated **security** and **code quality** standard for **Solidity smart cont
 - `C4` - Use `block.timestamp` only for long intervals. (SWC-116)
 - `C5` - Don't use block.number for elapsed time. (SWC-116)
 - `C7` - Avoid delegatecall wherever possible, especially to external (even if trusted) contracts. (SWC-112)
-- `C8` - Don't use function types.
+- `C8` - Do not update the length of an array while iterating over it.
 - `C9` - Don't use `blockhash()`, etc for randomness. (SWC-120)
 - `C10` - Are signatures protected against replay with a nonce and `block.chainid` (SWC-121)
 - `C11` - Ensure all signatures use EIP-712. (SWC-117 SWC-122)
@@ -82,12 +82,12 @@ Opinionated **security** and **code quality** standard for **Solidity smart cont
 - `C16` - Private data isn't private. (SWC-136)
 - `C17` - Updating a struct/array in memory won't modify it in storage.
 - `C18` - Never shadow state variables. (SWC-119)
-- `C19` - No unused variables. (SWC-131)
+- `C19` - Do not mutate function parameters.
 - `C20` - Is calculating a value on the fly cheaper than storing it?
 - `C21` - Are all state variables read from the correct contract (master vs. clone)?
-- `C22` - Is all usage of `>` or `<` or `>=` or `<=` correct?
+- `C22` - Are comparison operators used correctly (`>`, `<`, `>=`, `<=`), especially to prevent off-by-one errors?
 - `C23` - Are logical operators used correctly (`==`, `!=`, `&&`, `||`, `!`), especially to prevent off-by-one errors?
-- `C24` - Always mul before div, unless mul could overflow.
+- `C24` - Always multiply before dividing, unless the multiplication could overflow.
 - `C25` - Are magic numbers replaced by a constant with an intuitive name?
 - `C26` - If the recipient of ETH had a fallback function that reverted, could it cause DoS? (SWC-113)
 - `C27` - Use SafeERC20 or check return values safely.
@@ -108,6 +108,9 @@ Opinionated **security** and **code quality** standard for **Solidity smart cont
 - `C42` - Comment explanations wherever optimizations are done, along with an estimate of much gas they save.
 - `C43` - Comment explanations wherever certian optimizations are purposely avoided, along with an estimate of much gas they would/wouldn't save if implemented.
 - `C44` - Use `unchecked` blocks where overflow/underflow is impossible, or where if an underflow/overflow was to occur, reverting would be unhelpful (counters, etc). Comment explanations wherever `unchecked` is used, along with an estimate of how much gas it saves (if relevant).
+- `C45` - Do not depend on Solidity's arithmetic operator precedence rules. In addition to the use of parentheses to override default operator precedence, parentheses should also be used to emphasise it.
+- `C46` - Expressions passed to logical/comparsion operators (`&&`/`||`/`>=`/`==`/etc) should not have side-effects.
+- `C47` - When incrementing/decrementing a value, use `++`/`--` respectively to be explicit. 
 
 ## External Calls
 
@@ -116,7 +119,7 @@ Opinionated **security** and **code quality** standard for **Solidity smart cont
 - `X3` - Would it be harmful if the call reentered into the current function?
 - `X4` - Would it be harmful if the call reentered into the another function?
 - `X5` - Is the result checked and errors dealt with? (SWC-104)
-- `X6` - What if it reaches the gas limit?
+- `X6` - What if it uses all the gas provided?
 
 ## Static Calls
 
