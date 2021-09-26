@@ -111,6 +111,7 @@ Opinionated **security** and **code quality** standard for **Solidity smart cont
 - `C45` - Do not depend on Solidity's arithmetic operator precedence rules. In addition to the use of parentheses to override default operator precedence, parentheses should also be used to emphasise it.
 - `C46` - Expressions passed to logical/comparsion operators (`&&`/`||`/`>=`/`==`/etc) should not have side-effects.
 - `C47` - When incrementing/decrementing a value, use `++`/`--` respectively to be explicit. 
+- `C48` - Wherever arithmetic operations are performed that could result in precision loss, ensure it benefits the right actors in the system, and document it with comments. 
 
 ## External Calls
 
@@ -146,6 +147,7 @@ Opinionated **security** and **code quality** standard for **Solidity smart cont
 - `T6` - Is the purpose of the contract and how it interacts with others documented using natspec?
 - `T7` - The contract should be marked `abstract` if another contract must inherit it to unlock its full functionality.
 - `T8` - Emit an appropriate event for any non-immutable variable set in the constructor that emits an event when mutated elsewhere.
+- `T9` - Avoid over-inheritance as it masks complexity and encourages over-abstraction.
 
 ## Project
 
