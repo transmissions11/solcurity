@@ -148,6 +148,7 @@ Opinionated **security** and **code quality** standard for **Solidity smart cont
 - `T7` - The contract should be marked `abstract` if another contract must inherit it to unlock its full functionality.
 - `T8` - Emit an appropriate event for any non-immutable variable set in the constructor that emits an event when mutated elsewhere.
 - `T9` - Avoid over-inheritance as it masks complexity and encourages over-abstraction.
+- `T10` - Always use the named import syntax to explictly declare which contracts are being imported from another file.
 
 ## Project
 
