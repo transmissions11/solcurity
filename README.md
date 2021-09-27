@@ -107,7 +107,7 @@ Opinionated **security** and **code quality** standard for **Solidity smart cont
 - `C41` - Comment explanations + example inputs/outputs next to complex and fixed point math.
 - `C42` - Comment explanations wherever optimizations are done, along with an estimate of much gas they save.
 - `C43` - Comment explanations wherever certian optimizations are purposely avoided, along with an estimate of much gas they would/wouldn't save if implemented.
-- `C44` - Use `unchecked` blocks where overflow/underflow is impossible, or where if an underflow/overflow was to occur, reverting would be unhelpful (counters, etc). Comment explanations wherever `unchecked` is used, along with an estimate of how much gas it saves (if relevant).
+- `C44` - Use `unchecked` blocks where overflow/underflow is impossible, or where an overflow/underflow is unrealistic on human timescales (counters, etc). Comment explanations wherever `unchecked` is used, along with an estimate of how much gas it saves (if relevant).
 - `C45` - Do not depend on Solidity's arithmetic operator precedence rules. In addition to the use of parentheses to override default operator precedence, parentheses should also be used to emphasise it.
 - `C46` - Expressions passed to logical/comparsion operators (`&&`/`||`/`>=`/`==`/etc) should not have side-effects.
 - `C47` - When incrementing/decrementing a value, use `++`/`--` respectively to be explicit. 
