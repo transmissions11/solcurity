@@ -53,7 +53,7 @@ Opinionated **security** and **code quality** standard for **Solidity smart cont
 - `F14` - If a function is intentionally unsafe (to save gas, etc), use an unwieldy name to draw attention to its risk.
 - `F15` - Are all arguments, return values, side effects and other information documented using natspec?
 - `F16` - If the function allows operating on another user in the system, do not assume `msg.sender` is the user being operated on.
-- `F17` - If the function requires the contract is in an uninitialized state, do not use `owner == address(0)` to check.
+- `F17` - If the function requires the contract be in an uninitialized state, check an explicit `initialized` variable. Do not use `owner == address(0)` or other similar checks as substitutes.
 - `F18` - Only use `private` to intentionally prevent child contracts from calling the function, prefer `internal` for flexibility.
 - `F19` - Use `virtual` if there are legitimate (and safe) instances where a child contract may wish to override the function's behavior.
 
