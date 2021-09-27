@@ -149,6 +149,7 @@ Opinionated **security** and **code quality** standard for **Solidity smart cont
 - `T8` - Emit an appropriate event for any non-immutable variable set in the constructor that emits an event when mutated elsewhere.
 - `T9` - Avoid over-inheritance as it masks complexity and encourages over-abstraction.
 - `T10` - Always use the named import syntax to explictly declare which contracts are being imported from another file.
+- `T11` - Group imports by their folder/package. Seperate groups with an empty line. Groups of external dependencies should come first, then mock/testing contracts (if relevant), and finally local imports.
 
 ## Project
 
