@@ -150,6 +150,7 @@ Opinionated **security** and **code quality** standard for **Solidity smart cont
 - `T9` - Avoid over-inheritance as it masks complexity and encourages over-abstraction.
 - `T10` - Always use the named import syntax to explictly declare which contracts are being imported from another file.
 - `T11` - Group imports by their folder/package. Seperate groups with an empty line. Groups of external dependencies should come first, then mock/testing contracts (if relevant), and finally local imports.
+- `T12` - Summarize the purpose and functionality of the contract with a `@notice` natspec comment. Document how the contract interacts with other contracts inside/outside the project in a `@dev` natspec comment.
 
 ## Project
 
