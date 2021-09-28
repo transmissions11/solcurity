@@ -75,7 +75,7 @@ Opinionated **security** and **code quality** standard for **Solidity smart cont
 - `C9` - Don't use `blockhash()`, etc for randomness. (SWC-120)
 - `C10` - Are signatures protected against replay with a nonce and `block.chainid` (SWC-121)
 - `C11` - Ensure all signatures use EIP-712. (SWC-117 SWC-122)
-- `C12` - Output of `abi.encodePacked()` shouldn't be hashed if using >2 dynamic types. (SWC-133)
+- `C12` - Output of `abi.encodePacked()` shouldn't be hashed if using >2 dynamic types. Prefer using `abi.encode()` in general. (SWC-133)
 - `C13` - Careful with assembly, don't use any arbitrary data. (SWC-127)
 - `C14` - Don't assume a specific ETH balance. (SWC-132)
 - `C15` - Avoid insufficient gas griefing. (SWC-126)
