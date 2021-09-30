@@ -112,6 +112,7 @@ Opinionated **security** and **code quality** standard for **Solidity smart cont
 - `C46` - Expressions passed to logical/comparsion operators (`&&`/`||`/`>=`/`==`/etc) should not have side-effects.
 - `C47` - When incrementing/decrementing a value, use `++`/`--` respectively to be explicit. 
 - `C48` - Wherever arithmetic operations are performed that could result in precision loss, ensure it benefits the right actors in the system, and document it with comments. 
+- `C49` - Document the reason why a reentrancy lock is necessary whenever it's used with an inline or `@dev` natspec comment.
 
 ## External Calls
 
