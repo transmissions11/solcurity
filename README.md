@@ -173,3 +173,4 @@ Opinionated **security** and **code quality** standard for **Solidity smart cont
 - `D8` - Watch out for fee-on-transfer tokens. If they are unsupported, ensure that property is documented.
 - `D9` - Watch out for rebasing tokens. If they are unsupported, ensure that property is documented.
 - `D10` - Watch out for tokens that use too many or too few decimals. Ensure the max and min supported values are documented.
+- `D11` - Watch out for contracts that provide a way to recover assets sent directly to them. This can mess up share price functions that rely on the raw Ether or token balances of an address.
