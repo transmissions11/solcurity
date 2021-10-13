@@ -1,6 +1,8 @@
 # The Solcurity Standard 
 
-Opinionated **security** and **code quality** standard for **Solidity smart contracts**. Based off work by [BoringCrypto](https://github.com/sushiswap/bentobox/blob/master/documentation/checks.txt).
+Opinionated **security** and **code quality** standard for **Solidity smart contracts**. 
+
+_Based off work by [BoringCrypto](https://github.com/sushiswap/bentobox/blob/master/documentation/checks.txt), [Mudit Gupta](https://www.youtube.com/watch?v=LLiJK_VeAvQ), [Runtime Verification](https://github.com/runtimeverification/verified-smart-contracts/wiki/List-of-Security-Vulnerabilities), and [ConsenSys Diligence](https://consensys.github.io/smart-contract-best-practices/known_attacks)_.
 
 ### General Review Approach:
 - Read the project's docs, specs, and whitepaper to understand what the smart contracts are meant to do.
