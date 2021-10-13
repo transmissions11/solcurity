@@ -160,7 +160,7 @@ _Based off work by [BoringCrypto](https://github.com/sushiswap/bentobox/blob/mas
 - `P1` - Use the right license (you must use GPL if you depend on GPL code, etc).
 - `P2` - Unit test everything.
 - `P3` - Fuzz test as much as possible.
-- `P4` - Use the SMTChecker to prove invariants.
+- `P4` - Use symbolic execution where possible.
 - `P5` - Run Slither/Solhint and review all findings.
 
 ## DeFi
