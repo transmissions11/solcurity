@@ -95,7 +95,7 @@ Opinionated **security** and **code quality** standard for **Solidity smart cont
 - `C29` - Don't use `msg.value` if recursive delegatecalls are possible (like if the contract inherits `Multicall`/`Batchable`).
 - `C30` - Don't assume `msg.sender` is always a relevant user.
 - `C31` - Don't use `assert()` unless for fuzzing or formal verification. (SWC-110)
-- `C32` - Don't use `tx.origin` for authorization, (SWC-115)
+- `C32` - Don't use `tx.origin` for authorization. (SWC-115)
 - `C33` - Don't use `address.transfer()` or `address.send()`. Use `.call.value(...)("")` instead. (SWC-134)
 - `C34` - When using low-level calls, ensure the contract exists before calling.
 - `C35` - When calling a function with many parameters, use the named argument syntax.
