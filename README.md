@@ -115,6 +115,7 @@ _Based off work by [BoringCrypto](https://github.com/sushiswap/bentobox/blob/mas
 - `C47` - When incrementing/decrementing a value, use `++`/`--` respectively to be explicit. 
 - `C48` - Wherever arithmetic operations are performed that could result in precision loss, ensure it benefits the right actors in the system, and document it with comments. 
 - `C49` - Document the reason why a reentrancy lock is necessary whenever it's used with an inline or `@dev` natspec comment.
+- `C50` - When fuzzing functions that take specific numerical ranges use modulo to tigthen the range of inputs (like `x = x % 10000 + 1` to restrict from 1 to 10k)
 
 ## External Calls
 
