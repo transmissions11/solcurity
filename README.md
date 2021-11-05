@@ -169,12 +169,11 @@ _Based off work by [BoringCrypto](https://github.com/sushiswap/bentobox/blob/mas
 
 - `D1` - Check your assumptions about what other contracts do and return.
 - `D2` - Don't mix internal accounting with actual balances.
-- `D3` - Be careful of relying on the raw token balance of a contract to determine earnings.
-- `D4` - Don't use spot price from an AMM as an oracle.
+- `D3` - Don't use spot price from an AMM as an oracle.
+- `D4` - Do not trade on AMMs without receiving a price target off-chain or via an oracle.
 - `D5` - Use sanity checks to prevent oracle/price manipulation.
-- `D6` - Do not trade on AMMs without receiving a price target off-chain or via an oracle.
+- `D6` - Watch out for tokens that use too many or too few decimals. Ensure the max and min supported values are documented.
 - `D7` - Watch out for ERC-777 tokens. Even a token you trust could preform reentrancy if it's an ERC-777.
 - `D8` - Watch out for fee-on-transfer tokens. If they are unsupported, ensure that property is documented.
 - `D9` - Watch out for rebasing tokens. If they are unsupported, ensure that property is documented.
-- `D10` - Watch out for tokens that use too many or too few decimals. Ensure the max and min supported values are documented.
-- `D11` - Watch out for contracts that provide a way to recover assets sent directly to them. This can mess up share price functions that rely on the raw Ether or token balances of an address.
+- `D10` - Be careful of relying on the raw token balance of a contract to determine earnings. Contracts which provide a way to recover assets sent directly to them can mess up share price functions that rely on the raw Ether or token balances of an address.
