@@ -43,7 +43,7 @@ _Based off work by [BoringCrypto](https://github.com/sushiswap/bentobox/blob/mas
 - `F2` - Should it be `internal`?
 - `F3` - Should it be `payable`?
 - `F4` - Can it be combined with another similar function?
-- `F5` - Validate all parameters are within safe bounds, even if the function can only be called by a trusted user.
+- `F5` - Validate all parameters are within safe bounds, even if the function can only be called by a trusted users.
 - `F6` - Is the checks before effects pattern followed? (SWC-107)
 - `F7` - Check for front-running possibilities, such as the approve function. (SWC-114)
 - `F8` - Is insufficient gas griefing possible? (SWC-126)
