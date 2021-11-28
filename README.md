@@ -112,11 +112,10 @@ _Based off work by [BoringCrypto](https://github.com/sushiswap/bentobox/blob/mas
 - `C44` - Use `unchecked` blocks where overflow/underflow is impossible, or where an overflow/underflow is unrealistic on human timescales (counters, etc). Comment explanations wherever `unchecked` is used, along with an estimate of how much gas it saves (if relevant).
 - `C45` - Do not depend on Solidity's arithmetic operator precedence rules. In addition to the use of parentheses to override default operator precedence, parentheses should also be used to emphasise it.
 - `C46` - Expressions passed to logical/comparison operators (`&&`/`||`/`>=`/`==`/etc) should not have side-effects.
-- `C47` - When incrementing/decrementing a value, use `++`/`--` respectively to be explicit. 
-- `C48` - Wherever arithmetic operations are performed that could result in precision loss, ensure it benefits the right actors in the system, and document it with comments. 
-- `C49` - Document the reason why a reentrancy lock is necessary whenever it's used with an inline or `@dev` natspec comment.
-- `C50` - When fuzzing functions that only operate on specific numerical ranges use modulo to tighten the fuzzer's inputs (such as `x = x % 10000 + 1` to restrict from 1 to 10,000).
-- `C51` - Use ternary expressions to simplify branching logic wherever possible.
+- `C47` - Wherever arithmetic operations are performed that could result in precision loss, ensure it benefits the right actors in the system, and document it with comments. 
+- `C48` - Document the reason why a reentrancy lock is necessary whenever it's used with an inline or `@dev` natspec comment.
+- `C59` - When fuzzing functions that only operate on specific numerical ranges use modulo to tighten the fuzzer's inputs (such as `x = x % 10000 + 1` to restrict from 1 to 10,000).
+- `C50` - Use ternary expressions to simplify branching logic wherever possible.
 
 ## External Calls
 
