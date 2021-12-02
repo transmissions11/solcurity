@@ -116,6 +116,7 @@ _Based off work by [BoringCrypto](https://github.com/sushiswap/bentobox/blob/mas
 - `C48` - Document the reason why a reentrancy lock is necessary whenever it's used with an inline or `@dev` natspec comment.
 - `C49` - When fuzzing functions that only operate on specific numerical ranges use modulo to tighten the fuzzer's inputs (such as `x = x % 10000 + 1` to restrict from 1 to 10,000).
 - `C50` - Use ternary expressions to simplify branching logic wherever possible.
+- `C51` - When operating on more than one address, ask yourself what happens if they're the same.
 
 ## External Calls
 
