@@ -177,3 +177,4 @@ _Based off work by [BoringCrypto](https://github.com/sushiswap/bentobox/blob/mas
 - `D8` - Watch out for fee-on-transfer tokens. If they are unsupported, ensure that property is documented.
 - `D9` - Watch out for tokens that use too many or too few decimals. Ensure the max and min supported values are documented.
 - `D10` - Be careful of relying on the raw token balance of a contract to determine earnings. Contracts which provide a way to recover assets sent directly to them can mess up share price functions that rely on the raw Ether or token balances of an address.
+- `D11` - If your contract is likely a target of infinite approvals, do not make arbitrary calls from user input.
