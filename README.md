@@ -123,7 +123,7 @@ _Based off work by [BoringCrypto](https://github.com/sushiswap/bentobox/blob/mas
 - `X1` - Is an external contract call actually needed?
 - `X2` - If there is an error, could it cause DoS? Like `balanceOf()` reverting. (SWC-113)
 - `X3` - Would it be harmful if the call reentered into the current function?
-- `X4` - Would it be harmful if the call reentered into the another function?
+- `X4` - Would it be harmful if the call reentered into another function?
 - `X5` - Is the result checked and errors dealt with? (SWC-104)
 - `X6` - What if it uses all the gas provided?
 
