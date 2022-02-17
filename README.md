@@ -58,6 +58,8 @@ _Based off work by [BoringCrypto](https://github.com/sushiswap/bentobox/blob/mas
 - `F17` - If the function requires the contract be in an uninitialized state, check an explicit `initialized` variable. Do not use `owner == address(0)` or other similar checks as substitutes.
 - `F18` - Only use `private` to intentionally prevent child contracts from calling the function, prefer `internal` for flexibility.
 - `F19` - Use `virtual` if there are legitimate (and safe) instances where a child contract may wish to override the function's behavior.
+- `F20` - Use `calldata` instead of `memory` for function parameters if the function argument is only read in Solidity 0.8.*.
+- `F21` - Use short revert strings or custom error messages with solidity 0.8.4.
 
 ## Modifiers
 
@@ -117,6 +119,8 @@ _Based off work by [BoringCrypto](https://github.com/sushiswap/bentobox/blob/mas
 - `C49` - When fuzzing functions that only operate on specific numerical ranges use modulo to tighten the fuzzer's inputs (such as `x = x % 10000 + 1` to restrict from 1 to 10,000).
 - `C50` - Use ternary expressions to simplify branching logic wherever possible.
 - `C51` - When operating on more than one address, ask yourself what happens if they're the same.
+- `C52` - Cache the length in for loops. Explanation [here](https://gist.github.com/hrkrshnn/ee8fabd532058307229d65dcd5836ddc#caching-the-length-in-for-loops)
+- `C53` - Consider using atleast Solidity v0.8.9 and up to avoid compiler bugs like Keccak Caching, ABI decoder bug for multi-dimensional memory arrays, signed immutables and user defined value types bug. This has the bonus of the compiler giving you more gas optimizations and safety checks for free.
 
 ## External Calls
 
@@ -162,8 +166,9 @@ _Based off work by [BoringCrypto](https://github.com/sushiswap/bentobox/blob/mas
 - `P1` - Use the right license (you must use GPL if you depend on GPL code, etc).
 - `P2` - Unit test everything.
 - `P3` - Fuzz test as much as possible.
-- `P4` - Use symbolic execution where possible.
-- `P5` - Run Slither/Solhint and review all findings.
+- `P4` - Use formal verification where needed and as often as possible.
+- `P5` - Use symbolic execution where possible.
+- `P6` - Run Slither/Solhint and review all findings.
 
 ## DeFi
 
