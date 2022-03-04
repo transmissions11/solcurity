@@ -126,6 +126,7 @@ _Based off work by [BoringCrypto](https://github.com/sushiswap/bentobox/blob/mas
 - `X4` - Would it be harmful if the call reentered into another function?
 - `X5` - Is the result checked and errors dealt with? (SWC-104)
 - `X6` - What if it uses all the gas provided?
+- `X7` - Could it cause an out-of-gas in the calling contract if it returns a massive amount of data?
 
 ## Static Calls
 
