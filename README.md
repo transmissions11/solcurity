@@ -1,183 +1,187 @@
-# The Solcurity Standard 
+# WTF Solcurity 安全标准
 
-Opinionated **security** and **code quality** standard for **Solidity smart contracts**. 
+**翻译修改自 [@transmission11](https://github.com/transmissions11) 的 [The Solcurity Standard](https://github.com/transmissions11/solcurity)**
 
-_Based off work by [BoringCrypto](https://github.com/sushiswap/bentobox/blob/master/documentation/checks.txt), [Mudit Gupta](https://www.youtube.com/watch?v=LLiJK_VeAvQ), [Runtime Verification](https://github.com/runtimeverification/verified-smart-contracts/wiki/List-of-Security-Vulnerabilities), and [ConsenSys Diligence](https://consensys.github.io/smart-contract-best-practices/known_attacks)_.
+最近在学 Solidity 智能合约安全，发现中文缺少这方面的资料，就翻译了 @transmission11 写的 Solcurity - Solidity **智能合约**的**安全**和**代码质量**标准。它基于 [BoringCrypto](https://github.com/sushiswap/bentobox/blob/master/documentation/checks.txt), [Mudit Gupta](https://www.youtube.com/watch?v=LLiJK_VeAvQ), [Runtime Verification](https://github.com/runtimeverification/verified-smart-contracts/wiki/List-of-Security-Vulnerabilities), 和 [ConsenSys Diligence](https://consensys.github.io/smart-contract-best-practices/known_attacks) 的工作，总结了审查合约时要注意的安全事项。之后 WTF Academy 会基于它添加新的安全事项。
 
-### General Review Approach:
-- Read the project's docs, specs, and whitepaper to understand what the smart contracts are meant to do.
-- Construct a mental model of what you expect the contracts to look like before checking out the code.
-- Glance over the contracts to get a sense of the project's architecture. Tools like Surya can come in handy.
-- Compare the architecture to your mental model. Look into areas that are surprising.
-- Create a threat model and make a list of theoretical high level attack vectors.
-- Look at areas that can do value exchange. Especially functions like `transfer`, `transferFrom`, `send`, `call`, `delegatecall`, and `selfdestruct`. Walk backward from them to ensure they are secured properly.
-- Look at areas that interface with external contracts and ensure all assumptions about them are valid like share price only increases, etc.
-- Do a generic line-by-line review of the contracts.
-- Do another review from the perspective of every actor in the threat model.
-- Glance over the project's tests + code coverage and look deeper at areas lacking coverage.
-- Run tools like Slither/Solhint and review their output.
-- Look at related projects and their audits to check for any similar issues or oversights.
+---
 
-## Variables
+### 审查方法概览:
 
-- `V1` - Can it be `internal`?
-- `V2` - Can it be `constant`?
-- `V3` - Can it be `immutable`?
-- `V4` - Is its visibility set? (SWC-108)
-- `V5` - Is the purpose of the variable and other important information documented using natspec?
-- `V6` - Can it be packed with an adjacent storage variable?
-- `V7` - Can it be packed in a struct with more than 1 other variable?
-- `V8` - Use full 256 bit types unless packing with other variables.
-- `V9` - If it's a public array, is a separate function provided to return the full array?
-- `V10` - Only use `private` to intentionally prevent child contracts from accessing the variable, prefer `internal` for flexibility.
+- 阅读项目的文档、规范和白皮书，了解智能合约的用途。
+- 在查看代码之前，在脑海中构建一个期望中的合约架构模型。
+- 快速浏览一遍合约，感受项目结构，可以利用Surya这类工具。
+- 将项目架构与你脑海中的合约架构模型进行比较，检查不符合预期的部分。
+- 创建威胁模型并列出理论上的高级攻击向量。
+- 查看与价值交换相关的地方，尤其是`transfer`，`transferFrom`，`send`，`call`，`delegatecall`，和 `selfdestruct`。优先检查它们，确保安全。
+- 查看与外部合约交互的区域，并确保所有关于它们的假设都是有效的，例如价格只会上涨等等。
+- 对合约进行一般性的逐行审查。
+- 从威胁模型中每个参与者的角度进行另一次审查。
+- 快速浏览项目的测试 + 代码覆盖率，并深入了解缺乏覆盖率的区域。
+- 运行 Slither/Solhint 等工具并审查其输出。
+- 查看相关项目及其审计，以检查是否存在任何类似问题或疏忽。
 
-## Structs
+## 变量
 
-- `S1` - Is a struct necessary? Can the variable be packed raw in storage?
-- `S2` - Are its fields packed together (if possible)?
-- `S3` - Is the purpose of the struct and all fields documented using natspec?
+- `V1` - 它是否可以是 `internal`?
+- `V2` - 它是否可以是 `constant`?
+- `V3` - 它是否可以是 `immutable`?
+- `V4` - 它是否设置了可见性? (SWC-108)
+- `V5` - 变量的用途和其他重要信息是否使用 natspec 标准记录?
+- `V6` - 它可以与相邻的存储变量一起打包吗?
+- `V7` - 它是否可以和其他变量打包在一个`struct`中?
+- `V8` - 使用完整的 256 位类型，除非与其他变量一起打包。
+- `V9` - 如果它是一个公共`array`，是否提供了一个单独的函数来返回完整的数组？?
+- `V10` - 如果不是有意阻止子合约访问变量，使用更加灵活的`internal`，而不是`private`。
 
-## Functions
+## 结构体
 
-- `F1` - Can it be `external`?
-- `F2` - Should it be `internal`?
-- `F3` - Should it be `payable`?
-- `F4` - Can it be combined with another similar function?
-- `F5` - Validate all parameters are within safe bounds, even if the function can only be called by a trusted users.
-- `F6` - Is the checks before effects pattern followed? (SWC-107)
-- `F7` - Check for front-running possibilities, such as the approve function. (SWC-114)
-- `F8` - Is insufficient gas griefing possible? (SWC-126)
-- `F9` - Are the correct modifiers applied, such as `onlyOwner`/`requiresAuth`?
-- `F10` - Are return values always assigned?
-- `F11` - Write down and test invariants about state before a function can run correctly.
-- `F12` - Write down and test invariants about the return or any changes to state after a function has run.
-- `F13` - Take care when naming functions, because people will assume behavior based on the name.
-- `F14` - If a function is intentionally unsafe (to save gas, etc), use an unwieldy name to draw attention to its risk.
-- `F15` - Are all arguments, return values, side effects and other information documented using natspec?
-- `F16` - If the function allows operating on another user in the system, do not assume `msg.sender` is the user being operated on.
-- `F17` - If the function requires the contract be in an uninitialized state, check an explicit `initialized` variable. Do not use `owner == address(0)` or other similar checks as substitutes.
-- `F18` - Only use `private` to intentionally prevent child contracts from calling the function, prefer `internal` for flexibility.
-- `F19` - Use `virtual` if there are legitimate (and safe) instances where a child contract may wish to override the function's behavior.
+- `S1` - 这里是否有必要用`struct`? 可以仅用原始变量吗?
+- `S2` - 它的字段是否打包在了一起?
+- `S3` - `struct`的用途和所有字段是否使用 natspec 标准记录？
 
-## Modifiers
+## 函数
 
-- `M1` - Are no storage updates made (except in a reentrancy lock)?
-- `M2` - Are external calls avoided?
-- `M3` - Is the purpose of the modifier and other important information documented using natspec?
+- `F1` - 它是否可以是 `external`?
+- `F2` - 它是否应该是 `internal`?
+- `F3` - 它是否应该是 `payable`?
+- `F4` - 它是否可以与另一个类似的函数合并?
+- `F5` - 验证所有参数都在安全范围内，即使该函数只能由受信任的用户调用。
+- `F6` - 是否遵循 check-before-effect 模式的检查？ (SWC-107)
+- `F7` - 检查抢跑的可能性，例如批准功能。(SWC-114)
+- `F8` - 是否会遭受 `insufficient gas griefing` 攻击? (SWC-126)
+- `F9` - 是否应用了正确的修饰符，例如 `onlyOwner`/`requiresAuth`?
+- `F10` - 是否总是分配返回值？
+- `F11` - 写下并测试使得函数不能正常运行的状态不变量。
+- `F12` - 写下并测试返回值和改变状态的不变量
+- `F13` - 命名函数时要小心，因为人们会根据名称来假设行为。
+- `F14` - 如果一个函数是故意不安全的（出于节省gas等原因），使用一个特别的名字来引起人们对它的风险的注意。
+- `F15` - 是否所有参数、返回值、side effect和其他信息都使用 natspec 标准记录?
+- `F16` - 如果该功能允许对系统中的另一个用户进行操作，不要假定`msg.sender`是被操作的用户。
+- `F17` - 如果函数要求合约处于未初始化状态，使用显式的 `initialized` 变量检查。不要使用 `owner == address(0)` 或其他类似的检查作为替代品。
+- `F18` - 如果不是有意阻止子合约访问变量，使用更加灵活的`internal`，而不是`private`。
+- `F19` - 仅在子合约希望合法（且安全）重写函数的行为时使用`virtual`。
 
-## Code
+## 修饰符
 
-- `C1` - Using SafeMath or 0.8 checked math? (SWC-101)
-- `C2` - Are any storage slots read multiple times?
-- `C3` - Are any unbounded loops/arrays used that can cause DoS? (SWC-128)
-- `C4` - Use `block.timestamp` only for long intervals. (SWC-116)
-- `C5` - Don't use block.number for elapsed time. (SWC-116)
-- `C7` - Avoid delegatecall wherever possible, especially to external (even if trusted) contracts. (SWC-112)
-- `C8` - Do not update the length of an array while iterating over it.
-- `C9` - Don't use `blockhash()`, etc for randomness. (SWC-120)
-- `C10` - Are signatures protected against replay with a nonce and `block.chainid` (SWC-121)
-- `C11` - Ensure all signatures use EIP-712. (SWC-117 SWC-122)
-- `C12` - Output of `abi.encodePacked()` shouldn't be hashed if using >2 dynamic types. Prefer using `abi.encode()` in general. (SWC-133)
-- `C13` - Careful with assembly, don't use any arbitrary data. (SWC-127)
-- `C14` - Don't assume a specific ETH balance. (SWC-132)
-- `C15` - Avoid insufficient gas griefing. (SWC-126)
-- `C16` - Private data isn't private. (SWC-136)
-- `C17` - Updating a struct/array in memory won't modify it in storage.
-- `C18` - Never shadow state variables. (SWC-119)
-- `C19` - Do not mutate function parameters.
-- `C20` - Is calculating a value on the fly cheaper than storing it?
-- `C21` - Are all state variables read from the correct contract (master vs. clone)?
-- `C22` - Are comparison operators used correctly (`>`, `<`, `>=`, `<=`), especially to prevent off-by-one errors?
-- `C23` - Are logical operators used correctly (`==`, `!=`, `&&`, `||`, `!`), especially to prevent off-by-one errors?
-- `C24` - Always multiply before dividing, unless the multiplication could overflow.
-- `C25` - Are magic numbers replaced by a constant with an intuitive name?
-- `C26` - If the recipient of ETH had a fallback function that reverted, could it cause DoS? (SWC-113)
-- `C27` - Use SafeERC20 or check return values safely.
-- `C28` - Don't use `msg.value` in a loop.
-- `C29` - Don't use `msg.value` if recursive delegatecalls are possible (like if the contract inherits `Multicall`/`Batchable`).
-- `C30` - Don't assume `msg.sender` is always a relevant user.
-- `C31` - Don't use `assert()` unless for fuzzing or formal verification. (SWC-110)
-- `C32` - Don't use `tx.origin` for authorization. (SWC-115)
-- `C33` - Don't use `address.transfer()` or `address.send()`. Use `.call.value(...)("")` instead. (SWC-134)
-- `C34` - When using low-level calls, ensure the contract exists before calling.
-- `C35` - When calling a function with many parameters, use the named argument syntax.
-- `C36` - Do not use assembly for create2. Prefer the modern salted contract creation syntax.
-- `C37` - Do not use assembly to access chainid or contract code/size/hash. Prefer the modern Solidity syntax.
-- `C38` - Use the `delete` keyword when setting a variable to a zero value (`0`, `false`, `""`, etc).
-- `C39` - Comment the "why" as much as possible. 
-- `C40` - Comment the "what" if using obscure syntax or writing unconventional code.
-- `C41` - Comment explanations + example inputs/outputs next to complex and fixed point math.
-- `C42` - Comment explanations wherever optimizations are done, along with an estimate of much gas they save.
-- `C43` - Comment explanations wherever certain optimizations are purposely avoided, along with an estimate of much gas they would/wouldn't save if implemented.
-- `C44` - Use `unchecked` blocks where overflow/underflow is impossible, or where an overflow/underflow is unrealistic on human timescales (counters, etc). Comment explanations wherever `unchecked` is used, along with an estimate of how much gas it saves (if relevant).
-- `C45` - Do not depend on Solidity's arithmetic operator precedence rules. In addition to the use of parentheses to override default operator precedence, parentheses should also be used to emphasise it.
-- `C46` - Expressions passed to logical/comparison operators (`&&`/`||`/`>=`/`==`/etc) should not have side-effects.
-- `C47` - Wherever arithmetic operations are performed that could result in precision loss, ensure it benefits the right actors in the system, and document it with comments. 
-- `C48` - Document the reason why a reentrancy lock is necessary whenever it's used with an inline or `@dev` natspec comment.
-- `C49` - When fuzzing functions that only operate on specific numerical ranges use modulo to tighten the fuzzer's inputs (such as `x = x % 10000 + 1` to restrict from 1 to 10,000).
-- `C50` - Use ternary expressions to simplify branching logic wherever possible.
-- `C51` - When operating on more than one address, ask yourself what happens if they're the same.
+- `M1` - 是否没有进行存储更新（重入锁除外）?
+- `M2` - 是否避免了外部调用?
+- `M3` - 修饰符的用途和其他重要信息是否使用 natspec 标准记录?
 
-## External Calls
+## 代码
 
-- `X1` - Is an external contract call actually needed?
-- `X2` - If there is an error, could it cause DoS? Like `balanceOf()` reverting. (SWC-113)
-- `X3` - Would it be harmful if the call reentered into the current function?
-- `X4` - Would it be harmful if the call reentered into another function?
-- `X5` - Is the result checked and errors dealt with? (SWC-104)
-- `X6` - What if it uses all the gas provided?
-- `X7` - Could it cause an out-of-gas in the calling contract if it returns a massive amount of data?
-- `X8` - If you are calling a particular function, do not assume that `success` implies that the function exists (phantom functions).
+- `C1` - 是否使用了 `SafeMath` 或 `solidity 0.8` 检查数学运算? (SWC-101)
+- `C2` - 是否有存储槽被多次读取?
+- `C3` - 是否使用了任何可能导致 DoS 的无界循环/数组? (SWC-128)
+- `C4` - 仅在长间隔的用途上使用 `block.timestamp`。 (SWC-116)
+- `C5` - 不要在使用 `block.number` 进行时间估计。 (SWC-116)
+- `C7` - 尽可能避免使用`delegatecall`，尤其是对外部（即使是受信任的）合约。 (SWC-112)
+- `C8` - 迭代时不要更新数组的长度。
+- `C9` - 不要使用 `blockhash()`等全局变量获取随机数。 (SWC-120)
+- `C10` - 是否保护了签名不被 `nonce` 和 `block.chainid` 重放。 (SWC-121)
+- `C11` - 确保所有签名使用了 `EIP-712`。 (SWC-117 SWC-122)
+- `C12` - 如果计算 >2 个动态类型的哈希时，应该使用 `abi.encode()`，而不是 `abi.encodePacked()`。 (SWC-133)
+- `C13` - 谨慎对待内联汇编。 (SWC-127)
+- `C14` - 不要假设特定的 `ETH` 余额。 (SWC-132)
+- `C15` - 避免 `insufficient gas griefing`攻击。 (SWC-126)
+- `C16` - `private` 数据不是隐私的。 (SWC-136)
+- `C17` - 更新 `memory` 中的 `struct`/`array` 不会在 `storage` 中修改它。
+- `C18` - 永远不要隐藏状态变量。 (SWC-119)
+- `C19` - 不要在函数中改变入参的值。
+- `C20` - 即时计算数值是否比存储它更便宜?
+- `C21` - 所有状态变量是否都从正确的合约中读取（主合约与克隆合约）?
+- `C22` - 是否正确使用了比较运算符 (`>`, `<`, `>=`, `<=`)，特别是防止差一错误（off-by-one error）?
+- `C23` - 是否正确使用了逻辑运算符 (`==`, `!=`, `&&`, `||`, `!`)，特别是防止差一错误（off-by-one error）?
+- `C24` - 在除法前使用乘法，除非乘法将导致溢出。
+- `C25` - 魔术数字是否被具有直观名称的常数所取代？
+- `C26` - 如果 `ETH` 的接收者有一个 `fallback` 函数，它会导致 DoS 吗? (SWC-113)
+- `C27` - 使用 SafeERC20 或安全检查返回值。
+- `C28` - 不要在循环中使用 `msg.value`。
+- `C29` - 如果可能出现循环 `delegatecall`，则不要使用 `msg.value`（比如合约继承了 `Multicall`/`Batchable`）。
+- `C30` - 不要假设 `msg.sender` 是相关交易的用户.
+- `C31` - 除非用于模糊测试或形式验证，否则请勿使用 `assert()`。 (SWC-110)
+- `C32` - 不要将 `tx.origin` 用于授权检查。 (SWC-115)
+- `C33` - 不要使用 `address.transfer()` 或 `address.send()`，使用 `.call.value(...)("")`。 (SWC-134)
+- `C34` - 使用低级调用（low-level call）时确保合约存在。
+- `C35` - 调用具有多个参数的函数时，使用命名参数语法。
+- `C36` - 不要使用内联汇编调用 `create2`，使用新式的 `salt` 合约创建语法。
+- `C37` - 不要使用内联汇编获取`chainid`或者合约的代码/长度/，使用新式Solidity语法。
+- `C38` - 将变量设置为零值（`0`, `false`, `""`）时使用`delete`关键字 .
+- `C39` - 尽可能注释代码来解释 “为什么” 要这么做。
+- `C40` - 在使用晦涩的语法或编写非常规代码时，尽可能注释代码在做 “什么”。
+- `C41` - 在复杂的数学过程旁注释上解释和输入输出例子。
+- `C42` - 在优化gas的地方注释说明，并估计节省的gas。
+- `C43` - 在有意避免优化的地方注释说明，并估计多花费的gas。
+- `C44` - 在不可能上溢/下溢的代码块，或者上溢/下溢在人类时间尺度上不现实的代码块（计数器等）使用 `unchecked`。注释中写清楚哪里用了 `unchecked`，并估计节省的gas。
+- `C45` - 不要依赖 `Solidity` 的算术运算符优先规则。括号不仅用来覆盖默认运算符优先级，而且可以用于强调它。
+- `C46` - 传递给逻辑/比较运算符 (`&&`/`||`/`>=`/`==`) 的表达式不应有 side effects。
+- `C47` -  如果执行了可能导致精度损失的算术运算，确保它有利于系统中的正确参与者，并在注释中记录它。
+- `C48` - 在注释中写下函数需要重入锁的原因。
+- `C49` - 如果模糊函数仅支持特定范围的参数，使用取模操作限制参数输入范围（例如 `x = x % 10000 + 1` 将范围限制在从 1 到 10,000）。
+- `C50` - 尽可能使用三元表达式来简化逻辑。
+- `C51` - 当对多个地址进行操作时，问问自己如果它们相同的话会发生什么。
 
-## Static Calls
+## 外部调用
 
-- `S1` - Is an external contract call actually needed?
-- `S2` - Is it actually marked as view in the interface?
-- `S3` - If there is an error, could it cause DoS? Like `balanceOf()` reverting. (SWC-113)
-- `S4` - If the call entered an infinite loop, could it cause DoS?
+- `X1` - 是否真的需要外部合约调用？
+- `X2` - 如果运行时报错，是否会导致 DoS？比如 `balanceOf()` 回滚。 (SWC-113)
+- `X3` - 如果调用重新进入当前函数是否有害？
+- `X4` - 如果调用重新进入另一个函数是否有害？
+- `X5` - 是否检查了结果并处理错误? (SWC-104)
+- `X6` - 如果它用光 `gas` 后会发生什么?
+- `X7` - 如果它返回大量数据，会导致调用合约中的 gas 耗尽报错吗？
+- `X8` - 如果你调用特定函数时返回了 `success`，也不意味着该函数存在。
 
-## Events
+## 静态调用
 
-- `E1` - Should any fields be indexed?
-- `E2` - Is the creator of the relevant action included as an indexed field?
-- `E3` - Do not index dynamic types like strings or bytes.
-- `E4` - Is when the event emitted and all fields documented using natspec?
-- `E5` - Are all users/ids that are operated on in functions that emit the event stored as indexed fields?
-- `E6` - Avoid function calls and evaluation of expressions within event arguments. Their order of evaluation is unpredictable.
+- `S1` - 是否真的需要外部合约调用？
+- `S2` - 是否应该标记为 `view` 吗？
+- `S3` - 如果运行时报错，是否会导致 DoS？比如 `balanceOf()` 回滚。 (SWC-113)
+- `S4` - 如果调用进入无限循环，是否会导致 DoS？
 
-## Contract
+## 事件
 
-- `T1` - Use an SPDX license identifier.
-- `T2` - Are events emitted for every storage mutating function?
-- `T3` - Check for correct inheritance, keep it simple and linear. (SWC-125)
-- `T4` - Use a `receive() external payable` function if the contract should accept transferred ETH.
-- `T5` - Write down and test invariants about relationships between stored state.
-- `T6` - Is the purpose of the contract and how it interacts with others documented using natspec?
-- `T7` - The contract should be marked `abstract` if another contract must inherit it to unlock its full functionality.
-- `T8` - Emit an appropriate event for any non-immutable variable set in the constructor that emits an event when mutated elsewhere.
-- `T9` - Avoid over-inheritance as it masks complexity and encourages over-abstraction.
-- `T10` - Always use the named import syntax to explicitly declare which contracts are being imported from another file.
-- `T11` - Group imports by their folder/package. Separate groups with an empty line. Groups of external dependencies should come first, then mock/testing contracts (if relevant), and finally local imports.
-- `T12` - Summarize the purpose and functionality of the contract with a `@notice` natspec comment. Document how the contract interacts with other contracts inside/outside the project in a `@dev` natspec comment.
+- `E1` - 哪些变量应该被 `indexed`？
+- `E2` - 相关操作的创建者地址是否包含在索引字段中？
+- `E3` - 不要将包括`string` 和 `bytes` 的动态变量设为 事件的 `inedex`。
+- `E4` - 事件释放的时间和变量是否使用 natspec 标准记录?
+- `E5` - 将释放事件的函数中所有被操作用户/ID设为`indexed`字段。
+- `E6` - 避免函数调用和事件参数中使用表达式求值，他们的求值顺序是不可预测的。
 
-## Project
+## 合约
 
-- `P1` - Use the right license (you must use GPL if you depend on GPL code, etc).
-- `P2` - Unit test everything.
-- `P3` - Fuzz test as much as possible.
-- `P4` - Use symbolic execution where possible.
-- `P5` - Run Slither/Solhint and review all findings.
+- `T1` - 使用 `SPDX` 许可证标识符.
+- `T2` - 是否所有会修改 `storage` 变量的函数都释放了时间？
+- `T3` - 检查所有的继承是否正确，保证他们简洁且线性。 (SWC-125)
+- `T4` - 如果合约应接收 `ETH`，是否加了 `receive() external payable`？
+- `T5` - 写下并测试关于变量之间关系的不变量。
+- `T6` - 合约的目的和与其他合约的交互是否使用 natspec 标准记录？
+- `T7` - 如果另一个合约必须继承它以解锁其全部功能，则该合约应标记为 `abstract`。
+- `T8` - 如果构造函数中设置了非常量变量的值，且该变量的值也会在其他函数中被改变并释放事件（见`T2`），那么构造函数中也应该释放事件。
+- `T9` -  避免过度继承，因为它掩盖了复杂性并鼓励过度抽象。
+- `T10` - 始终使用命名的导入语法来明确声明哪些合约是从另一个文件中导入的。
+- `T11` - 按文件夹/包将引入进行分组，每组之间空一行，外部依赖组放在开头，然后是模拟/测试合约（如有），最后是本地导入。
+- `T12` - 使用 natspec 标准中的 `@notice` 记录合约的目的和功能，`@dev` 记录合约如何与项目内部/外部的其他合约交互。
+
+
+## 项目
+
+- `P1` - 使用正确额许可 （例如如果你依赖的包用了GLP协议，你也要使用）。
+- `P2` - 单元测试所有内容。
+- `P3` - 尽可能多的模糊测试。
+- `P4` - 尽可能多的使用符号执行。
+- `P5` - 运行 Slither/Solhint 并审查所有发现。
 
 ## DeFi
 
-- `D1` - Check your assumptions about what other contracts do and return.
-- `D2` - Don't mix internal accounting with actual balances.
-- `D3` - Don't use spot price from an AMM as an oracle.
-- `D4` - Do not trade on AMMs without receiving a price target off-chain or via an oracle.
-- `D5` - Use sanity checks to prevent oracle/price manipulation.
-- `D6` - Watch out for rebasing tokens. If they are unsupported, ensure that property is documented.
-- `D7` - Watch out for ERC-777 tokens. Even a token you trust could preform reentrancy if it's an ERC-777.
-- `D8` - Watch out for fee-on-transfer tokens. If they are unsupported, ensure that property is documented.
-- `D9` - Watch out for tokens that use too many or too few decimals. Ensure the max and min supported values are documented.
-- `D10` - Be careful of relying on the raw token balance of a contract to determine earnings. Contracts which provide a way to recover assets sent directly to them can mess up share price functions that rely on the raw Ether or token balances of an address.
-- `D11` - If your contract is a target for token approvals, do not make arbitrary calls from user input.
+- `D1` - 检查你对其他合约作用和返回值的假设。
+- `D2` - 不要将内部估计值与账户实际余额混为一谈。
+- `D3` - 不要将 `AMM` 的现货价格用作价格预言机。
+- `D4` - 如果没收到链下或预言机的价格目标，不要在 `AMM` 上进行交易。
+- `D5` - 使用完好性检查来防止预言机/价格操纵。
+- `D6` - 注意变基（rebasing）代币。如果它们不受支持，要在文档中明确。
+- `D7` - 注意 `ERC-777` 代币，即使是你信任的代币也可以被重入。
+- `D8` - 注意转账收税的代币，如果它们不受支持，要在文档中明确。
+- `D9` - 注意使用太多或太少小数的标记，要在文档中明确支持的最大值和最小值。
+- `D10` - 注意依赖代币余额来确定收益的合约，这个数值可能会被操纵。
+- `D11` - 如果你的合约是代币授权的目标，请不要根据用户输入进行任意调用。
