@@ -12,6 +12,7 @@ _Based off work by [BoringCrypto](https://github.com/sushiswap/bentobox/blob/mas
 - Create a threat model and make a list of theoretical high level attack vectors.
 - Look at areas that can do value exchange. Especially functions like `transfer`, `transferFrom`, `send`, `call`, `delegatecall`, and `selfdestruct`. Walk backward from them to ensure they are secured properly.
 - Look at areas that interface with external contracts and ensure all assumptions about them are valid like share price only increases, etc.
+- Do a review focused on protocol's functionalities, analyze how each of the core functions are implemented among the contracts.
 - Do a generic line-by-line review of the contracts.
 - Do another review from the perspective of every actor in the threat model.
 - Glance over the project's tests + code coverage and look deeper at areas lacking coverage.
